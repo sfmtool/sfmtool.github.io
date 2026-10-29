@@ -19,6 +19,9 @@ nav = [
   { "Home" = "index.md" },
   { "Tutorials" = [
     { "Getting Started" = "tutorials/getting-started.md" },
+    { "Viewing 3D Point Tracks" = "tutorials/point-tracks.md" },
+    { "Inspecting a Reconstruction" = "tutorials/inspecting.md" },
+    { "Converting Video to Image Sequences" = "tutorials/video-to-images.md" },
   ]},
 ]
 
