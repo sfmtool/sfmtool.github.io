@@ -55,7 +55,8 @@ Completed in 1m 4.75s
 ### 4. Explore in 3D
 
 Open the reconstruction in the SfM Explorer GUI by giving it the `.sfmr` file
-the solve wrote to the `sfmr/` directory.
+the solve wrote to the `sfmr/` directory. Its name starts with the date of the
+solve, so yours differs from the one below.
 
 ```
 $ sfm explorer sfmr/20260413-00-solve-dino_dog_toy_1-85.sfmr
@@ -106,8 +107,8 @@ open in SfM Explorer.
 Track View measures each observation against a small square of the surface,
 the point's patch, and a fresh solve has no patches yet. In the **Scene**
 panel, right-click the reconstruction's row, named after its file
-(`20260413-00-solve-dino_dog_toy_1-85`), and choose **Convert to Embedded
-Patches**.
+(`20260413-00-solve-dino_dog_toy_1-85` in the quickstart's example), and
+choose **Convert to Embedded Patches**.
 
 The 3D Viewer's status line reads *Converted 20260413-00-solve-dino_dog_toy_1-85
 to embedded patches: … points framed, 85 images read*, the row's name
@@ -128,7 +129,7 @@ the right.
 ### 3. Look through a photograph
 
 In the **Image Browser** at the bottom, double-click the thumbnail numbered
-**2** to look through it. The Image Browser numbers images from 0 and the file
+**2** to select it and look through it. The Image Browser numbers images from 0 and the file
 names count from 01, so this is `dino_dog_toy_03.jpg` (camera image 2).
 
 The 3D Viewer's status line reads *Looking through
@@ -145,11 +146,11 @@ from red for the shortest through yellow to green for the longest, and a
 Click the **Track Table** tab, beside the 3D Viewer tab. Tick **Seen in
 selected image**, so that the table lists only the points seen in
 `dino_dog_toy_03.jpg`. Click the **Track** heading twice to sort by track
-length, longest first (the first click sorts shortest first, and the heading
-then shows a downward triangle). Click the top row to select its point.
+length, longest first (the first click sorts shortest first; after the
+second, the heading shows a downward triangle). Click the top row to select its point.
 
-The row turns blue, and Track View's header shows the point's ID and ends
-with *track: N obs*, where N is the number in the row's **Track** cell.
+The row turns blue, and Track View's header shows the point's ID and
+*track: N obs*, where N is the number in the row's **Track** cell.
 
 ![Track Table, Image Detail and Track View side by side](images/dino-in-sfm-explorer-track-image-panels-split.jpg)
 
