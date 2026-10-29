@@ -63,10 +63,8 @@ $ sfm explorer sfmr/20260413-00-solve-dino_dog_toy_1-85.sfmr
 ```
 
 !!! note
-    SfM Explorer is part of the PyPI package from sfmtool 0.3, so `sfm
-    explorer` works after `pip install sfmtool`. The 0.2 package does not
-    include it; with 0.2, run the viewer from a source checkout with
-    `pixi run gui`. Its automated window tests run on Windows, macOS and
+    Use the latest version of sfmtool, which includes SfM Explorer. Its
+    automated window tests run on Windows, macOS and
     Linux, but most hands-on use has been on Windows. On Linux it needs a
     Vulkan driver.
 
