@@ -33,8 +33,10 @@ the page.
 
 - **Use the viewer's exact words.** Write panel, menu, toolbar and column
   names exactly as the viewer shows them, in bold (**Image Detail**, **Reproj
-  Error**). Use the word the viewer shows even where its accessible name
-  differs (the **Track** heading, not `Sort by track_length`). Use the same
+  Error**). The viewer names each control by the text it shows (the
+  **Track** heading is `Sort by Track` to an agent), so the visible word is
+  the one to write. A control whose name lacks its visible text is a viewer
+  bug: report it in `sfmtool` rather than writing around it. Use the same
   word for the same thing on every page; when a concept has a term in
   `specs/GLOSSARY.md`, use that term.
 - **Pair each gesture with the name of the operation.** "Double-click its
