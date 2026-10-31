@@ -21,6 +21,11 @@ navigation is in `zensical.toml`, and the build runs through Pixi:
   the same thing. Name the thing and say what it does.
 - Pull requests are squash-merged, and every commit needs a DCO sign-off
   (`git commit -s`).
+- `reports/` holds dated findings about the docs, such as those carried over
+  from a bug bash in `sfmtool`. When a change addresses a finding, add a dated
+  status line under it rather than deleting it (`> _Status (YYYY-MM-DD):
+  **Done** — <what changed>, PR #<n>._`), and delete a report once nothing in
+  it is still worth tracking.
 
 ## Steps that a person or an agent can follow
 
