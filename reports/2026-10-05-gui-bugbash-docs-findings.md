@@ -61,7 +61,7 @@ things would help a new reader:
 > _Status (2026-11-01): **Partially done** — the `sfm motion` output on the
 > inspecting page is re-captured with the current columns and the new break
 > verdict, and the page says its counts come from a newer solve and that the
-> reader's will differ, branch `motion-verdict-output`. The `sfm inspect -v`
+> reader's will differ, PR #6. The `sfm inspect -v`
 > output there is still the older one._
 
 - `sfm inspect -v` now also prints *Tool options*, *Depth reliability*,
