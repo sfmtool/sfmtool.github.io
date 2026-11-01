@@ -58,6 +58,12 @@ things would help a new reader:
 > sfmtool/sfmtool.github.io repository (PR #1058);
 > the fix goes in a PR there._
 
+> _Status (2026-11-01): **Partially done** — the `sfm motion` output on the
+> inspecting page is re-captured with the current columns and the new break
+> verdict, and the page says its counts come from a newer solve and that the
+> reader's will differ, branch `motion-verdict-output`. The `sfm inspect -v`
+> output there is still the older one._
+
 - `sfm inspect -v` now also prints *Tool options*, *Depth reliability*,
   *Point or bearing* and *Integrity: OK*.
 - `sfm motion`'s summary table now has the columns Dist, Rot, StepR, CovR,
