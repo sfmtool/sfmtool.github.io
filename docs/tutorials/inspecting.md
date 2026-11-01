@@ -194,54 +194,89 @@ Completed in 0.04s
 ## 4. Detect sequence discontinuities
 
 The `sfm motion` command analyzes successive camera motions in image
-sequences and flags jumps in translation or rotation. This is especially useful
-for reconstructions made from video footage, where a discontinuity can indicate
-a problem with the solve.
+sequences and flags jumps in translation or rotation, along with sudden
+changes in step size and in the number of points the images see. This is
+especially useful for reconstructions made from video footage, where a
+discontinuity can indicate a problem with the solve. The output below
+comes from a newer solve of the same photos, so its counts differ a little from
+those in the sections above, and yours will differ too.
 
 ```
 $ sfm motion sfmr/20260413-00-solve-dino_dog_toy_1-85.sfmr
-Reconstruction: 85 images, 10,580 points, 80,387 observations
+Reconstruction: 85 images, 10,310 points, 74,757 observations
 Found 1 sequence(s)
 
 Analyzing sequence: images\dino_dog_toy_%02d.jpg (85 frames)
 
-  Successive motion -- median translation: 0.8931, median rotation: 10.06°
-  Extrapolation thresholds:  trans>2.6794 (3x median step)  rot>15.0° (fixed)
+  Successive motion -- median translation: 0.8867, median rotation: 9.99°
+  Signal thresholds:
+    Pose extrapolation:  trans>2.6601 (3x median step)  rot>15.0°
+    Step-size ratio  (w=8):  max(pre/post, post/pre) > 1.5
+    Coviz drop       (w=16):  baseline/cross-overlap > 1.8
+    Obs-count outlier (w=24):  |z-score| > 2.5 (low tail)
 
-    Frame  Image                                     L.trans   L.rot  R.trans   R.rot  Flag
-  -----------------------------------------------------------------------------------------------
-        1  images/dino_dog_toy_01.jpg                      -       -   0.3631   2.15°
-        2  images/dino_dog_toy_02.jpg                      -       -   0.2910   3.86°
-        3  images/dino_dog_toy_03.jpg                 0.3631   2.15°   0.1158   2.31°
-        4  images/dino_dog_toy_04.jpg                 0.2910   3.86°   0.1039   1.34°
-        5  images/dino_dog_toy_05.jpg                 0.1158   2.31°   0.0841   1.66°
+    Frame  Image                                     L.trans   L.rot  R.trans   R.rot   StepR    CovR    ObsZ  Flag
+  ------------------------------------------------------------------------------------------------------------------------
+        1  images/dino_dog_toy_01.jpg                      -       -   0.3575   2.10°       -       -    -1.8
+        2  images/dino_dog_toy_02.jpg                      -       -   0.2873   3.83°       -    0.99    -0.4
+        3  images/dino_dog_toy_03.jpg                 0.3575   2.10°   0.1170   2.32°       -    0.97    +0.9
+        4  images/dino_dog_toy_04.jpg                 0.2873   3.83°   0.1067   1.35°    1.10    0.89    +1.2
+        5  images/dino_dog_toy_05.jpg                 0.1170   2.32°   0.0805   1.63°    1.11    0.88    +0.4
+        6  images/dino_dog_toy_06.jpg                 0.1067   1.35°   0.3199   0.97°    1.26    0.86    +0.3
+        7  images/dino_dog_toy_07.jpg                 0.0805   1.63°   0.6684  22.50°    1.43    0.86    -0.6  R.r
         ...
-       83  images/dino_dog_toy_83.jpg                 0.1783   3.92°   0.2595   5.16°
-       84  images/dino_dog_toy_84.jpg                 0.3085   5.90°        -       -
-       85  images/dino_dog_toy_85.jpg                 0.2595   4.88°        -       -
+       83  images/dino_dog_toy_83.jpg                 0.1747   3.89°   0.2600   5.14°    1.59    0.48    -2.5  Step,Obs
+       84  images/dino_dog_toy_84.jpg                 0.3096   5.94°        -       -       -    0.43    -4.0  Obs
+       85  images/dino_dog_toy_85.jpg                 0.2600   4.85°        -       -       -    0.42    -3.7  Obs
 
 ================================================================================
 Summary
 ================================================================================
 
-  images\dino_dog_toy: 85 frames, 10 discontinuity(s)
-              Edge  Dist(prev)      Dist  Dist(next)      Rot   SharedPts    Err(A)    Err(B)
-    -------------------------------------------------------------------------------------------------
-              8->9      0.7198     0.4371       0.9174   <23.60°>         637   1.259px   1.600px
-            11->12      1.2370     0.8553       0.6491   <11.66°>         871   1.202px   0.986px
-            16->17      0.8221     0.1831       1.8127   <30.90°>         623   1.710px   1.230px
-            27->28      0.4765    <9.1148>      0.6144     6.60°          121   1.388px   1.389px
-            37->38      0.6539    <4.5843>      0.9920   <63.77°>          44   1.429px   1.190px
-            44->45      0.9375    <9.5281>      2.3214   <54.10°>          83   1.616px   1.188px
-            53->54      0.7773     1.1221       1.1162   <24.71°>          74   1.030px   1.312px
-            56->57      0.7577     0.7312       0.6561   <11.42°>         414   1.306px   1.455px
-            64->65      0.6032     0.7401       1.0490   <21.51°>         354   1.146px   1.228px
-            70->71      1.3146     1.0790       1.2156   <10.70°>         382   1.349px   1.366px
+  images\dino_dog_toy: 85 frames, 10 discontinuity(s), 0 break(s)
+    Break rule: RotR > 4, where expected rotation = 9.989° per frame number x max(gap, 1); SharedPts < 89.4; NearPts < 283.3
+              Edge      Dist      Rot   StepR    CovR    ObsZ(A/B)  SharedPts    Err(A)    Err(B)  Signals  NearPts    RotR  Break
+    -----------------------------------------------------------------------------------------------------------------------------------
+              7->8     0.7195     <1.02°>    <1.51>     0.86     -0.6/-1.2        576   1.558px   1.373px  P S         3196    0.10  -
+            16->17     0.1840    <30.89°>    <1.66>     1.00     -0.6/+0.5        565   1.965px   1.298px  P S         2996    3.09  -
+            27->28    <9.1286>     6.56°     <1.95>     0.93     -1.6/-1.9         97   1.536px   1.560px  P S         2240    0.66  -
+            37->38    <4.6110>   <63.93°>     1.42      1.16     -0.8/-0.3         33   1.397px   1.294px  P           2047    6.40  -
+            52->53     0.7546    <16.12°>    <1.85>     0.91   -1.4/<-3.5>         48   1.307px   1.105px  P S O       1148    1.61  -
+            56->57     0.7326    <11.42°>     1.32      1.20     +0.4/+0.5        354   1.395px   1.591px  P            625    1.14  -
+            68->69     0.8788      5.28°     <1.54>     1.58   -1.5/<-3.0>        129   1.458px   1.960px  S O          471    0.53  -
+            70->71     1.0823    <10.77°>     1.27      1.57     -0.9/-0.1        310   1.619px   1.648px  P            540    1.08  -
+            75->76     1.2199     12.08°     <1.51>     0.88     +0.3/+0.0        290   1.212px   1.495px  S            930    1.21  -
+            82->83     0.7374      8.49°     <1.59>     0.48   -1.1/<-2.5>        171   1.342px   1.509px  S O          218    0.85  -
 
 Total: 10 discontinuity(s) across 1 sequence(s).
-Completed in 0.10s
+  Single-signal (low confidence):  4
+  Multi-signal  (high confidence): 6
+  Legend: P=pose residual, S=step-size ratio, C=coviz drop, O=obs-count outlier.
+  NearPts = points seen both in the 8 images up to the edge and the 8 after it. RotR = rotation / expected rotation. BREAK = RotR, SharedPts and NearPts all past the break rule.
+Verdict: no breaks
+Completed in 0.66s
 ```
+
+The per-frame table shows how far each pose is from where its neighbours on
+the left and right predict it, and the **Flag** column names the signals that
+fired. The summary lists one row per discontinuity, with the signals in the
+**Signals** column.
+
+Each discontinuity is then checked for a break. A break is a place where the
+solve put the two stretches of the camera path on either side in inconsistent
+places. The reconstruction's other numbers, such as the registered image
+count, the points per image and the reprojection error, can look normal
+across one. An edge is a break when the camera turns more than 4 times the
+usual rotation (**RotR**), and the two images share few points
+(**SharedPts**), and the 8 images before the edge share few points with the 8
+after it (**NearPts**). The `Break rule:` line gives this sequence's limits, the
+**Break** column marks each break with `BREAK`, and the last line, `Verdict:`,
+names the breaks or says `no breaks`.
 
 This dataset isn't from video — the images were taken from different angles
 around the toy — so the detected discontinuities here are expected large
-changes in viewpoint rather than actual problems.
+changes in viewpoint rather than actual problems, and the verdict is
+`no breaks`. For example, edge 37->38 turns 6.4 times the usual rotation and
+its two images share only 33 points, but the 8 photos before it and the 8
+after it still share 2047 points, so the solve has tied the two stretches
+together.
