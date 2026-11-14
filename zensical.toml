@@ -27,6 +27,10 @@ nav = [
 
 [project.theme]
 features = ["navigation.expand"]
+# The SfM Explorer application icon: a copy of
+# `crates/sfm-explorer/assets/icon/sfm-explorer-icon-64.png` in the `sfmtool`
+# repository, where the script that renders it from its SVG lives.
+favicon = "assets/images/favicon.png"
 
 [[project.theme.palette]]
 scheme = "default"
