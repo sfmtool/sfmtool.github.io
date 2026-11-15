@@ -34,12 +34,13 @@ that, read eight, in this order:
    viewer specs a page's spec links, checked with `git log --since=<last audit
    date>` over those paths in `../sfmtool`.
 4. A seeded draw from the pages audited least recently. Prior coverage comes
-   from the `### docs/…` headings of earlier docs-audit reports:
+   from the `### docs/…` headings of earlier audit reports, which are the
+   reports under `reports/` with such a heading:
 
 ```bash
 w=$(mktemp -d); SEED=${SEED:-$RANDOM}; N=8   # record SEED in the report
 find docs -name '*.md' | sort > "$w/all.txt"
-grep -hoE '^### docs/[a-zA-Z0-9/_.-]+\.md' reports/*-docs-audit.md 2>/dev/null \
+grep -hoE '^### docs/[a-zA-Z0-9/_.-]+\.md' reports/*.md 2>/dev/null \
   | sed 's/^### //' | sort -u > "$w/done.txt"
 comm -23 "$w/all.txt" "$w/done.txt" > "$w/pool.txt"   # never audited first
 [ -s "$w/pool.txt" ] || cp "$w/all.txt" "$w/pool.txt"
@@ -74,9 +75,8 @@ Report the seed, the pool and the pages read.
    of each step, nothing named by a point ID.
 7. **Specs and pages out of step**: a page with no spec, a spec with no page,
    a page missing from the site spec's table or from `zensical.toml`'s nav,
-   a spec type that disagrees with the table. Also each "Current gaps" line:
-   still true (keep), now fixed (the spec should drop it), or a gap the page
-   has that the list lacks (a finding).
+   a spec type that disagrees with the table or with the page's section in
+   the nav.
 
 Weigh a finding by what a reader would do wrong believing the page: a command
 that fails outranks a paragraph that is too long.
@@ -95,8 +95,8 @@ Run these over every page and cite the numbers, including zeros.
 3. **Images.** Every image a page references exists, has alt text, and every
    file under an `images/` directory is referenced by some page.
 4. **Size.** Words per page, lines in fenced output blocks per page and the
-   longest block, against the previous docs-audit report's figures, so
-   growth shows.
+   longest block, against the previous audit report's figures, so growth
+   shows.
 5. **Repeated text.** Normalized sentences that appear on more than one page,
    and the run-to-run caveat (`grep -n "differ"`) outside its home page.
 6. **Commands.** Every `$ sfm …` line and every `sfm …` in a code span: the
@@ -158,17 +158,22 @@ Then **Mechanical findings**: the numbers of each check, with a table of one
 row per page (words, output lines, longest block, images, spec, nav).
 
 Then one section per page read, with the heading `### docs/<path>` exactly
-(the sampler greps for it):
+(the sampler greps for it), and its findings numbered within the section:
 
 ```
 ### docs/<path>
-**Spec:** specs/pages/<name>.md — <type>
-**Findings:**
-  - <check number and name>: <quoted text>, <evidence>. Proposed: <shorter or
-    corrected text, or where the content moves>.
-**Current gaps:** <for each spec gap: still true | fixed, drop it>; <new gaps>
-**Recommendation:** <change the page | change the spec | discuss>, one line why
+
+**Spec:** specs/pages/<name>.md (<type>). **Recommendation:** <change the
+page | change the spec | discuss>, one line why.
+
+1. **<short title>** (check <n>). <What is wrong and where: the quoted page
+   text or the section number.> <The evidence: an sfmtool path, `--help`
+   text or a line of run output.> <What the spec or site spec asks.>
+   Proposed: <the shorter or corrected text, or where the content moves>.
 ```
+
+A finding is referred to as `docs/<path>` finding `<n>`, and its status lines
+go directly under it.
 
 A page that is right and its spec wrong (the spec describes a job the page no
 longer needs to do) is **change the spec**; a page that drifts from a spec the
@@ -186,7 +191,8 @@ dated status line, as `AGENTS.md` describes, and naming the PR or branch:
 `> _Status (YYYY-MM-DD): **Done** — <what changed>, PR #<n>._` (also
 `Partially done`, `Not done`, `Declined` with the reason, `Needs decision`
 naming the choice). A run that read every page carries each still-open finding
-of the previous docs-audit report into its own, with its status lines, and
+of the previous audit report (the newest report under `reports/` with a
+`### docs/` section, whatever its name) into its own, with its status lines, and
 deletes the previous report in the same commit; a sampled run leaves the
 previous report in place, since it holds the only reading of the pages this
 run skipped. After saving, give the user the path and the top priorities.

@@ -1,6 +1,6 @@
 # Converting Video to Image Sequences (`docs/tutorials/video-to-images.md`)
 
-**Type:** how-to guide. It is listed under Tutorials in `zensical.toml`.
+**Type:** how-to guide, listed in the site's **How-to guides** navigation section.
 
 **Reader's goal:** turn a video of a scene into numbered images that `sfm`
 can solve.
@@ -33,8 +33,3 @@ the result.
   ([`pick-images-command.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/cli/image-feature/pick-images-command.md)),
   linked when the site has a page for it.
 - Filming advice beyond what the home page says about SfM.
-
-## Current gaps
-
-- The page uses a hand-written ffmpeg script instead of `sfm extract-frames`.
-- It does not say where the frames go next or link Getting Started.

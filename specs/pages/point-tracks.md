@@ -50,18 +50,3 @@ table, Track View, the camera view with the track, free navigation, the
   The page lists the keys the steps use.
 - How patches are made:
   [`embed-patches-command.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/cli/reconstruction/embed-patches-command.md).
-
-## Current gaps
-
-- § 1 says a **Patches** row appears under the reconstruction and the 3D view
-  draws patches. Since sfmtool PR #1285 the Scene panel has a
-  **Style** (**Dots** / **Patches**) line instead, and an edit does not change
-  the style; the step and its two screenshots need re-checking.
-- § 4 says one photo can hold several observations of a point and describes
-  the **Repeat obs.** column. A solve now drops repeat observations, so the
-  shared run has none and that column does not appear.
-- The file name (`20260413-…`) and screenshots come from an older run than
-  the one Getting Started and Inspecting quote.
-- § 4 lists all twelve Track View columns with a gloss for each.
-- Bug bash finding 16 in `reports/` (use a ground-truth reconstruction for the
-  GUI tutorial) is open.

@@ -104,6 +104,12 @@ a test instead of leaving the docs stale.
 > _Status (2026-10-28): **Not done** — the docs moved to the
 > sfmtool/sfmtool.github.io repository (PR #1058);
 > the fix goes in a PR there._
+>
+> _Status (2026-11-15): **Declined** — the site spec (`specs/README.md`)
+> makes the shared `dino_dog_toy` run from Getting Started the source of
+> every page's output and screenshots, so the viewer tutorial continues from
+> the reader's own reconstruction rather than moving to a ground-truth file;
+> branch `docs-specs`._
 
 Distances and angles in a step card only mean something in a reconstruction
 with a known scale and up direction. `seoul_bull_sculpture_ground_truth_v01.sfmr`

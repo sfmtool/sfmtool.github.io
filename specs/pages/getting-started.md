@@ -48,15 +48,3 @@ solve). This page's run is the shared run (see the [site spec](../README.md)).
 - The `Dropped … repeat observation(s)` line: the reader does not act on it
   ([`drop-repeat-observations.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/core/reconstruction/drop-repeat-observations.md)).
 - How to use the viewer: Viewing 3D Point Tracks.
-
-## Current gaps
-
-- Step 1 has no command to download the 85 images (bug bash finding 13 in
-  `reports/`).
-- The solve output and the paragraph before it say the first line names
-  GLOMAP; sfmtool PR #1288 changes that line to `Running global SfM with
-  COLMAP's global mapper...`, and the paragraph on GLOMAP's history then goes.
-- The paragraph after the solve output explains the `Dropped` line in detail.
-- The `sfm ws init` output is shown in full, though the text refers to one line.
-- The note under step 4 describes the viewer's test coverage by platform; the
-  reader needs only the Linux Vulkan requirement.

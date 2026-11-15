@@ -1,6 +1,6 @@
 # Inspecting a Reconstruction (`docs/tutorials/inspecting.md`)
 
-**Type:** how-to guide. It is listed under Tutorials in `zensical.toml`.
+**Type:** how-to guide, listed in the site's **How-to guides** navigation section.
 
 **Reader's goal:** find out from the command line whether a reconstruction is
 sound, and which images or parts of the camera path to look at.
@@ -45,14 +45,3 @@ The run-to-run caveat is linked to Getting Started, not repeated.
   [`motion-command.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/cli/reconstruction/motion-command.md).
 - The break rule's thresholds and the signal legend: `motion-command.md`.
 - Fixing a flagged image or a break: no page yet.
-
-## Current gaps
-
-- At about 1,900 words and 250 lines of output it is the longest page. The
-  `sfm inspect -v` and `sfm motion` blocks are nearly complete, and the
-  prose explains most sections of them (depth reliability, point-or-bearing,
-  the break rule).
-- It repeats the run-to-run caveat that Getting Started states.
-- The file name (`20260413-…`) disagrees with the run it quotes
-  (`Timestamp: 2026-11-14`) and with Getting Started's `20261114-…`.
-- The page has no table or sentence that maps questions to commands.

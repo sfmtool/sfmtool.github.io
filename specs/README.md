@@ -45,6 +45,10 @@ doing or knowing, and is the reader learning or working?
   specs.
 - **Explanation**: background on why things are as they are.
 
+The navigation in `zensical.toml` has a section per type: **Tutorials**
+holds Getting Started and Viewing 3D Point Tracks, and **How-to guides** holds
+Inspecting a Reconstruction and Converting Video to Image Sequences.
+
 | Page | Type | Spec |
 |---|---|---|
 | `docs/index.md` | Landing page (short explanation, then where to start) | [index.md](pages/index.md) |
@@ -97,10 +101,9 @@ follow, as `AGENTS.md` says.
 
 A page spec in `pages/` gives the page's type, the reader's goal, what the
 reader can do afterwards, the pages before and after, the dataset and
-commands, each output block and screenshot and why it is there, what the page
-leaves out and where that lives, and **Current gaps**: where the page does not
-meet its spec today. The gaps are the backlog for the next content change;
-a change that closes one deletes its line. Read a page's spec before changing
-the page, and change the spec first when the page's purpose changes. The
-`audit-docs` skill (`skills/audit-docs/SKILL.md`) checks the pages against
-these specs.
+commands, each output block and screenshot and why it is there, and what the
+page leaves out and where that lives. It describes the page's purpose, not
+the page's current state: where a page falls short of its spec is a finding
+in a report under `reports/`. Read a page's spec before changing the page,
+and change the spec first when the page's purpose changes. The `audit-docs`
+skill (`skills/audit-docs/SKILL.md`) checks the pages against these specs.

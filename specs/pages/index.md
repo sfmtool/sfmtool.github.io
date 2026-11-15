@@ -22,12 +22,12 @@ to Getting Started.
 - A link to Getting Started as the place to start.
 - About the author.
 
-**Screenshot:** SfM Explorer with a reconstruction and a selected track, to
-show the reader what they will get. Any shared-run reconstruction serves.
+**Screenshot:** SfM Explorer with the shared run's reconstruction and a
+selected track, to show the reader what they will get.
 
-**Commands:** at most a short sketch of the workflow (`sfm ws init`,
+**Commands:** a three-command sketch of the workflow (`sfm ws init`,
 `sfm solve`, `sfm explorer`) with no output, linking Getting Started for the
-real run. Whether the page carries even that is a maintainer decision.
+real run.
 
 ## Leaves out
 
@@ -35,14 +35,3 @@ real run. Whether the page carries even that is a maintainer decision.
 - `sfm inspect` and `sfm analyze`: [Inspecting a Reconstruction](inspecting.md).
 - How the solver works: sfmtool's
   [`solve-command.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/cli/reconstruction/solve-command.md).
-
-## Current gaps
-
-- The CLI section is a second walkthrough with captured output from an older
-  run on `seoul_bull_sculpture` (file dated `20260404`, `max_num_features:
-  8192`), not from the shared run, and it duplicates Getting Started.
-- It quotes `Running global SfM with GLOMAP...`, which sfmtool PR #1288
-  changes to `Running global SfM with COLMAP's global mapper...`.
-- The `sfm inspect` / `sfm analyze` block shows only `...` as output.
-- Order: the GUI section refers to "the below `sfm solve` command", and
-  installation and "What is Structure from Motion?" come after the commands.
