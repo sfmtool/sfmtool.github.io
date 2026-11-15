@@ -64,6 +64,13 @@ things would help a new reader:
 > reader's will differ, PR #6. The `sfm inspect -v`
 > output there is still the older one._
 
+> _Status (2026-11-14): **Done** — every output block on the inspecting page
+> (`sfm inspect -v`, `sfm analyze --metrics`, `sfm analyze --z-range` and
+> `sfm motion`) is re-captured from one run of the getting-started steps on
+> sfmtool `main`, and the page says the reader's counts will differ, branch
+> `inspect-motion-output`. The docs test the recommendation suggests is not
+> added._
+
 - `sfm inspect -v` now also prints *Tool options*, *Depth reliability*,
   *Point or bearing* and *Integrity: OK*.
 - `sfm motion`'s summary table now has the columns Dist, Rot, StepR, CovR,
