@@ -10,8 +10,8 @@ across photographs. These steps start from the reconstruction made in
 Track View measures each observation against a small square of the surface,
 the point's patch, and a fresh solve has no patches yet. In the **Scene**
 panel, right-click the reconstruction's row, named after its file
-(`20260413-00-solve-dino_dog_toy_1-85` in Getting Started's example), and
-choose **Convert to Embedded Patches**.
+(`20260413-00-solve-dino_dog_toy_1-85` in the run these screenshots come
+from), and choose **Convert to Embedded Patches**.
 
 ![The Scene panel's context menu for the reconstruction's row, with Convert to Embedded Patches highlighted](images/point-tracks-convert-menu.jpg)
 

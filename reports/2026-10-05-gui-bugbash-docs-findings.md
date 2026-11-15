@@ -34,6 +34,14 @@ this file once nothing in it is still worth tracking.
 > command to download the 85 images, steps 2 and 3 still use
 > `--max-features 4000` and `2000` without saying why, and the solver's log
 > lines and warnings are still not mentioned._
+>
+> _Status (2026-11-14): **Partially done** — Getting Started now says that the
+> workspace extracts at most 4000 features from each image and that the
+> solve's `--max-features 2000` uses at most 2000 of them, and that the `...`
+> in the solve output stands for about a hundred lines of COLMAP log whose
+> warnings (the two quoted below among them) do not mean the solve failed,
+> branch `getting-started-refresh`. Step 1 still gives no command to download
+> the 85 images._
 
 The CLI steps run word for word: 85 of 85 images registered in 51 s. Four
 things would help a new reader:
@@ -70,6 +78,11 @@ things would help a new reader:
 > sfmtool `main`, and the page says the reader's counts will differ, branch
 > `inspect-motion-output`. The docs test the recommendation suggests is not
 > added._
+
+> _Status (2026-11-14): **Done** — the Getting Started page's `sfm ws init`
+> and `sfm solve` output, which still quoted 10,580 points, is re-captured
+> from the same run on sfmtool `main` as the inspecting page, and the page
+> says the reader's counts will differ, branch `getting-started-refresh`._
 
 - `sfm inspect -v` now also prints *Tool options*, *Depth reliability*,
   *Point or bearing* and *Integrity: OK*.
