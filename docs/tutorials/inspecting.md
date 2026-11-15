@@ -30,7 +30,7 @@ Metadata:
   Operation: sfm_solve
   Tool: colmap
   Tool version: 4.2.1
-  Timestamp: 2026-11-14T18:23:08.198815600-08:00
+  Timestamp: 2026-11-14T22:53:37.188324100-08:00
   Tool options:
     algorithm: global
     max_features: 2000
@@ -46,20 +46,20 @@ Reconstruction summary:
   Thumbnails: yes
   Patch bitmaps: no
   Image paths:
-    images\dino_dog_toy_%02d.jpg (85 files, sequence 1-85)
+    images/dino_dog_toy_%02d.jpg (85 files, sequence 1-85)
   Cameras: 1
-  3D points: 10321
-  Observations: 74840
-  Mean observations per point: 7.25
+  3D points: 10362
+  Observations: 74894
+  Mean observations per point: 7.23
 
 Cameras:
   Camera 0: SIMPLE_RADIAL 2040x1536
     Parameter                      Value
     --------------------  --------------
-    focal_length             1470.782761
+    focal_length             1471.029552
     principal_point_x        1020.000000
     principal_point_y         768.000000
-    radial_distortion_k1        0.020072
+    radial_distortion_k1        0.020113
 
 Rig configuration: none
 
@@ -78,45 +78,45 @@ Image readings:
 
 3D Point statistics:
   Position range:
-    X: [-14.808, 33.875]
+    X: [-14.799, 33.001]
     X distribution:
-      ▁▁ ▁▁▁     ▁▁▁▁▁▁▁▄█▇▄▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁ ▁▁           ▁▁        ▁
-      -14.808                                                   33.875
-    Y: [-7.940, 14.073]
+      ▁▁ ▁ ▁      ▁▁▁▁▁▁▃█▇▆▄▁▁▁▁▁▁▁▁▁▁▁▁▁▁  ▁ ▁▁            ▁       ▁
+      -14.799                                                   33.001
+    Y: [-7.884, 31.800]
     Y distribution:
-      ▁▁▁▁ ▁▁▁▁▁ ▁ ▁▁        ▁▁▁▁▁▃▇█▆▅▃▂▃▂▂▁▁▁▁▁▁▁▁▁  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-      -7.940                                                    14.073
-    Z: [-17.154, 6.703]
+      ▁▁▁▁▁▁▁▁▁    ▁▁▂█▆▃▃▂▁▁▁▁▁ ▁▁▁▁▁▁▁▁▁                           ▁
+      -7.884                                                    31.800
+    Z: [-17.194, 7.122]
     Z distribution:
-      ▁   ▁▁▁▁▁▁▁   ▁  ▁   ▁▁        ▁▁▁▁▁▁▁▃█▇▆▄▇▇▅▃▂▁▁▁▁▁▁▁  ▁▁▁▁  ▁
-      -17.154                                                    6.703
+      ▁   ▁▁▁▁▁▁▁   ▁  ▁   ▁▁        ▁▁▁▁▁▁▁▇▇▆▄▅█▅▃▂▁▁▁▁▁▁▁  ▁▁▁▁  ▁▁
+      -17.194                                                    7.122
   Reprojection error:
-    Mean: 1.587 pixels
-    Median: 1.510 pixels
-    Min: 0.032 pixels
-    Max: 13.861 pixels
+    Mean: 1.595 pixels
+    Median: 1.512 pixels
+    Min: 0.038 pixels
+    Max: 14.587 pixels
     Error distribution:
-      ▁▂▄▅▆▇▇█▆▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁▁ ▁  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁▁▁▁▁▁▁▁▁▁▁ ▁ ▁▁
-      0.032                                                     13.861
+      ▁▂▄▅▆▇█▇▆▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁▁▁▁▁ ▁▁ ▁▁ ▁▁  ▁
+      0.038                                                     14.587
   Depth reliability (finite, >=2-view points):
-    Diagnosed points: 10,321
+    Diagnosed points: 10,362
     Inverse-depth z (depth/sigma; low => near-infinity):
-      Median: 481.16
-      Min: 3.49   Max: 4170.81
-      Below z=4 (near-infinity): 2 (0.0%)
+      Median: 477.58
+      Min: 3.15   Max: 4204.24
+      Below z=4 (near-infinity): 4 (0.0%)
     Inverse-depth z:
-      ▂▄▆▆▇▇▇█▆▆▅▅▅▄▃▃▃▂▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-      0.000                                                   2704.199
-    Condition number (median): 22.6
+      ▂▄▆▆▇▇▇█▅▆▅▅▅▄▃▃▃▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+      0.000                                                   2701.704
+    Condition number (median): 22.9
   Point or bearing (likelihood-ratio test, threshold 25):
-    Noise level: 1.244 px, measured over 74,840 observations of finite points, 0 excluded as outliers
-    Finite points called bearings: 0 of 10,321 scored
+    Noise level: 1.246 px, measured over 74,894 observations of finite points, 0 excluded as outliers
+    Finite points called bearings: 0 of 10,362 scored
     Points at infinity called finite: 0 of 0 scored
 
 Observation statistics:
   Min observations per point: 2
   Max observations per point: 53
-  Mean observations per point: 7.25
+  Mean observations per point: 7.23
   Median observations per point: 5
     Track length distribution:
       ▁█▄▂ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁  ▁  ▁
@@ -124,15 +124,15 @@ Observation statistics:
 
 Nearest neighbor distances:
   Min: 0.000000
-  Max: 5.889717
-  Mean: 0.041137
-  Median: 0.025569
+  Max: 3.598056
+  Mean: 0.040651
+  Median: 0.025561
     NN distance distribution:
-      █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁ ▁       ▁▁        ▁                        ▁
-      0.000                                                      5.890
+      █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁  ▁ ▁▁ ▁▁  ▁   ▁         ▁▁  ▁              ▁
+      0.000                                                      3.598
 
 Integrity: OK
-Completed in 0.15s
+Completed in 0.14s
 ```
 
 ## 2. Image reprojection statistics
@@ -149,34 +149,34 @@ $ sfm analyze --metrics sfmr/20260413-00-solve-dino_dog_toy_1-85.sfmr
 
 Per-image metrics analysis for: 20260413-00-solve-dino_dog_toy_1-85.sfmr
 ====================================================================================================
-Reconstruction: 85 images, 10,321 points, 74,840 observations
-Mean reprojection error: 1.587 px (median: 1.510 px)
+Reconstruction: 85 images, 10,362 points, 74,894 observations
+Mean reprojection error: 1.595 px (median: 1.512 px)
 
 Image (by mean error desc)                           Obs   MeanErr    MedErr    MaxErr  MeanTL  Flag
 ----------------------------------------------------------------------------------------------------
-images/dino_dog_toy_15.jpg                          1203     2.056     1.935    11.807    15.6
-      ▁▄▅▄▆▅█▆▆▃▃▃▂▁▁▁▁▁▁▁ ▁    ▁         ▁▁ ▁
-images/dino_dog_toy_16.jpg                          1002     1.968     1.761     7.602    13.6
-      ▂▆▇█▇▇▆▅▆▄▃▂▂▂▁▁▁▁▁▁▁▁   ▁
-images/dino_dog_toy_09.jpg                           948     1.835     1.606    13.832    11.6
-      ▂█▇▆▅▅▅▆▃▄▃▂▁▁▁▁▁▁▁▁▁▁                      ▁ ▁
-images/dino_dog_toy_43.jpg                          1056     1.797     1.643     6.716    15.0
-      ▂▅█▆▅▅▅▄▄▄▃▂▁▁▁▁▁▁ ▁  ▁
-images/dino_dog_toy_34.jpg                          1015     1.776     1.562    10.107    15.0
-      ▂▆█▆▇▅▄▄▄▃▃▂▁▁▁▁▁▁  ▁             ▁
+images/dino_dog_toy_15.jpg                          1203     2.033     1.927     8.937    15.6
+      ▁▄▅▄▆▅█▅▆▃▃▃▂▁▁▁▁▁▁▁ ▁     ▁  ▁
+images/dino_dog_toy_16.jpg                          1003     1.963     1.769     6.300    13.6
+      ▂▅▇█▇▆▆▅▅▄▃▂▂▂▁▁▁▁▁▁▁▁
+images/dino_dog_toy_09.jpg                           942     1.842     1.627    13.260    11.5
+      ▂██▆▅▆▅▆▃▄▃▂▁▁▁▁▁▁▁▁▁▁         ▁ ▁▁         ▁
+images/dino_dog_toy_43.jpg                          1045     1.788     1.636     6.615    14.9
+      ▃▅█▆▆▅▅▅▄▃▃▂▁▁▁▁▁▁ ▁  ▁
+images/dino_dog_toy_44.jpg                           874     1.773     1.525     6.804    14.6
+      ▂▆█▅▅▃▄▄▃▂▂▁▁▁▁▁▁▁▁▁▁ ▁
 ...
-images/dino_dog_toy_26.jpg                           773     1.020     0.713    12.890    13.7
-      ▄█▆▃▂▁▁▁▁▁▁▁▁▁ ▁▁    ▁▁           ▁  ▁ ▁ ▁ ▁
-images/dino_dog_toy_13.jpg                          1581     0.972     0.765    14.515    16.3
-      ▃▇█▅▂▁▁▁▁▁▁▁▁▁▁                         ▁        ▁
+images/dino_dog_toy_26.jpg                           771     1.004     0.704    12.185    13.6
+      ▄█▆▃▁▁▁▁▁▁▁▁▁▁ ▁▁▁   ▁   ▁▁▁ ▁ ▁        ▁
+images/dino_dog_toy_13.jpg                          1586     0.994     0.769    12.551    16.2
+      ▃▇█▅▂▁▁▁▁▁▁▁▁▁▁              ▁      ▁▁    ▁
 ----------------------------------------------------------------------------------------------------
-      0                                             14.8 px
-!!  mean error > 3.020 px (2x reconstruction median of 1.510 px)
-!   mean error > 2.265 px (1.5x reconstruction median of 1.510 px)
+      0                                             14.9 px
+!!  mean error > 3.023 px (2x reconstruction median of 1.512 px)
+!   mean error > 2.267 px (1.5x reconstruction median of 1.512 px)
 --  no observations (image registered but no points)
 MeanTL = mean track length (avg number of images observing each point)
 
-Completed in 0.16s
+Completed in 0.05s
 ```
 
 ## 3. Depth range per image
@@ -191,47 +191,47 @@ $ sfm analyze --z-range sfmr/20260413-00-solve-dino_dog_toy_1-85.sfmr
 Z range statistics for: 20260413-00-solve-dino_dog_toy_1-85.sfmr
 ======================================================================
 Images: 85
-3D points: 10321
+3D points: 10362
 Histogram buckets: 128
 
 Summary statistics:
   Images with data: 85/85
-  Min Z range: [0.738, 8.951]
-  Max Z range: [1.817, 37.484]
-  Observed points per image: [102, 1603]
+  Min Z range: [0.740, 8.902]
+  Max Z range: [1.818, 36.932]
+  Observed points per image: [104, 1606]
 
 Per-image Z ranges:
   images/dino_dog_toy_01.jpg:
-    Z range: [4.262, 14.255]
-    Observed:  n= 764, med=5.476, mean=5.863
-               [▁▃▆▆▇▇█▆▅▃▂▂▃▃▃▂▂▂▂▂▁▁▁▁▁▁▁▁                  ▁          ▁▁▁   ▁]
+    Z range: [4.261, 14.250]
+    Observed:  n= 757, med=5.492, mean=5.866
+               [▁▂▆▅▇▇█▆▅▃▂▂▂▃▃▂▂▂▂▁▁▁▁▁▁▁▁▁                  ▁           ▁▁   ▁]
   images/dino_dog_toy_02.jpg:
-    Z range: [3.829, 16.473]
-    Observed:  n=1215, med=4.866, mean=5.164
-               [▂▁▂▆█▅▄▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁                 ▁   ▁ ▁▁▁ ▁          ▁]
+    Z range: [3.847, 16.462]
+    Observed:  n=1212, med=4.861, mean=5.162
+               [▃▁▃▇█▅▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁                 ▁   ▁ ▁▁▁ ▁          ▁]
   images/dino_dog_toy_03.jpg:
-    Z range: [3.814, 14.414]
-    Observed:  n=1472, med=4.780, mean=5.045
-               [▂▁▂▇▇█▄▄▃▂▂▁▁▁▁▁▁▁▁ ▁▁▁▁▁▁▁▁ ▁▁   ▁                   ▁ ▁ ▁▁▁  ▁]
+    Z range: [3.842, 14.408]
+    Observed:  n=1466, med=4.780, mean=5.044
+               [▂▁▃▇█▇▄▄▃▂▂▁▁▁▁▁▁▁▁ ▁▁▁▁▁▁▁▁ ▁▁   ▁                   ▁▁▁ ▁▁▁  ▁]
   images/dino_dog_toy_04.jpg:
-    Z range: [3.818, 14.692]
-    Observed:  n=1603, med=4.758, mean=5.038
-               [▂▁▃█▇▆▄▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁                        ▁▁▁▁▁▁▁▁▁ ▁]
+    Z range: [3.819, 14.708]
+    Observed:  n=1606, med=4.757, mean=5.030
+               [▂▁▃█▇▆▄▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁                        ▁▁▁▁▁ ▁ ▁ ▁]
   images/dino_dog_toy_05.jpg:
-    Z range: [3.847, 14.371]
-    Observed:  n=1360, med=4.786, mean=5.021
-               [▃▁▂▇▇█▄▄▄▂▃▁▁▁▁▁▁▁▁ ▁▁▁  ▁  ▁▁                      ▁▁▁▁▁▁▁ ▁ ▁▁]
+    Z range: [3.847, 14.205]
+    Observed:  n=1363, med=4.786, mean=5.026
+               [▃▁▂▇▇█▅▄▄▂▃▂▁▁▁▁▁▁▁  ▁▁  ▁  ▁▁                       ▁▁▁▁▁▁▁▁▁ ▁]
   ...
   images/dino_dog_toy_84.jpg:
-    Z range: [0.952, 1.968]
-    Observed:  n= 218, med=1.291, mean=1.354
-               [▁▂▁ ▁▄▂▁▁▃▂▁▄▁▄▃▃▂█▄▆▂▂▁▄▄▂▄▁▂▄ ▁▂▁ ▁▁▁▁ ▁▁▁ ▁▁▁▁▂▁▁▁▁▁▁▁▁▁ ▁ ▂▁]
+    Z range: [0.952, 1.967]
+    Observed:  n= 217, med=1.291, mean=1.356
+               [▁▂▁ ▁▃▂▁▁▂▂▁▃▁▃▃▃▂█▄▅▂▂▁▃▃▂▃▁▂▃ ▁▁▁ ▁▁▁▁ ▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁ ▁ ▂▁]
   images/dino_dog_toy_85.jpg:
-    Z range: [1.078, 1.817]
-    Observed:  n= 156, med=1.339, mean=1.382
-               [▁▂▁▁▁ ▂▂▁ ▂▂▄▂▁▂█▄▅▂▅▁▂▃▂▁▅▁▂▂▂▃▁▂ ▁ ▁▂ ▁▁  ▁▂▁▁▁ ▂ ▁▂ ▁▂▂▁▁▁ ▁▁]
+    Z range: [1.079, 1.818]
+    Observed:  n= 152, med=1.327, mean=1.379
+               [▁▂▁ ▁▁▁▂▁▁▂▂▄▂▂▁█▄▄▂▄▁▂▃▂▁▄▁▂▃▂▂▁▂ ▁ ▁▂ ▁▁  ▁▁▁▁▁ ▂▁▁▂▁ ▂▂▁▁▁ ▁▁]
 
-Completed in 0.04s
+Completed in 0.03s
 ```
 
 ## 4. Detect sequence discontinuities
@@ -245,54 +245,54 @@ output below is cut at the `...` line to frames 1-7 and 83-85.
 
 ```
 $ sfm motion sfmr/20260413-00-solve-dino_dog_toy_1-85.sfmr
-Reconstruction: 85 images, 10,321 points, 74,840 observations
+Reconstruction: 85 images, 10,362 points, 74,894 observations
 Found 1 sequence
 
 Analyzing sequence: images/dino_dog_toy_%02d.jpg (85 frames)
 
-  Successive motion -- median translation: 0.8869, median rotation: 9.99°
+  Successive motion -- median translation: 0.8873, median rotation: 10.02°
   Signal thresholds:
-    Pose extrapolation:  trans>2.6607 (3x median step)  rot>15.0°
+    Pose extrapolation:  trans>2.6620 (3x median step)  rot>15.0°
     Step-size ratio  (w=8):  max(pre/post, post/pre) > 1.5
     Coviz drop       (w=16):  baseline/cross-overlap > 1.8
     Obs-count outlier (w=24):  z-score < -2.5
 
     Frame  Image                                     L.trans    L.rot  R.trans    R.rot   StepR    CovR    ObsZ  Flag
   -------------------------------------------------------------------------------------------------------------------
-        1  images/dino_dog_toy_01.jpg                      -        -   0.3600    2.12°       -       -    -1.8
-        2  images/dino_dog_toy_02.jpg                      -        -   0.2885    3.84°       -    0.99    -0.3
-        3  images/dino_dog_toy_03.jpg                 0.3600    2.12°   0.1168    2.32°       -    0.97    +0.9
-        4  images/dino_dog_toy_04.jpg                 0.2885    3.84°   0.1064    1.35°    1.10    0.89    +1.2
-        5  images/dino_dog_toy_05.jpg                 0.1168    2.32°   0.0810    1.63°    1.12    0.87    +0.4
-        6  images/dino_dog_toy_06.jpg                 0.1064    1.35°   0.3181    0.96°    1.27    0.86    +0.3
-        7  images/dino_dog_toy_07.jpg                 0.0810    1.63°   0.6690   22.50°    1.43    0.86    -0.6  R.r
+        1  images/dino_dog_toy_01.jpg                      -        -   0.3611    2.14°       -       -    -1.8
+        2  images/dino_dog_toy_02.jpg                      -        -   0.2889    3.84°       -    0.99    -0.4
+        3  images/dino_dog_toy_03.jpg                 0.3611    2.14°   0.1167    2.32°       -    0.97    +0.9
+        4  images/dino_dog_toy_04.jpg                 0.2889    3.84°   0.1057    1.34°    1.09    0.88    +1.3
+        5  images/dino_dog_toy_05.jpg                 0.1167    2.32°   0.0806    1.64°    1.11    0.87    +0.4
+        6  images/dino_dog_toy_06.jpg                 0.1057    1.34°   0.3192    0.97°    1.26    0.86    +0.3
+        7  images/dino_dog_toy_07.jpg                 0.0806    1.64°   0.6679   22.49°    1.43    0.85    -0.6  R.r
         ...
-       83  images/dino_dog_toy_83.jpg                 0.1740    3.88°   0.2594    5.15°    1.59    0.48    -2.4  Step
-       84  images/dino_dog_toy_84.jpg                 0.3085    5.92°        -        -       -    0.43    -3.6  Obs
-       85  images/dino_dog_toy_85.jpg                 0.2594    4.86°        -        -       -    0.43    -3.5  Obs
+       83  images/dino_dog_toy_83.jpg                 0.1740    3.89°   0.2594    5.15°    1.58    0.48    -2.6  Step,Obs
+       84  images/dino_dog_toy_84.jpg                 0.3092    5.95°        -        -       -    0.43    -3.7  Obs
+       85  images/dino_dog_toy_85.jpg                 0.2594    4.87°        -        -       -    0.43    -3.8  Obs
 
   images/dino_dog_toy: 10 discontinuities, 0 breaks
-    Break rule: RotR > 4 and SharedPts < 89.4 and NearPts < 284.5, where expected rotation = 9.994° per frame number x max(gap, 1)
+    Break rule: RotR > 4 and SharedPts < 88.8 and NearPts < 285.5, where expected rotation = 10.020° per frame number x max(gap, 1)
               Edge      Dist      Rot    StepR      CovR       ObsZ(A/B)  SharedPts    Err(A)    Err(B)  Signals  NearPts    RotR  Break
     ------------------------------------------------------------------------------------------------------------------------------------
-              7->8    0.7206    1.00°    <1.51>     0.85       -0.6/-1.2        580   1.545px   1.362px  P S         3204    0.10  -
-            16->17    0.1838   30.89°    <1.65>     1.00       -0.6/+0.4        563   1.968px   1.289px  P S         3009    3.09  -
-            27->28    9.1279    6.56°    <1.95>     0.94       -1.6/-2.0         98   1.558px   1.528px  P S         2250    0.66  -
-            37->38    4.6117   63.94°     1.43      1.16       -0.8/-0.3         33   1.413px   1.284px  P           2048    6.40  -
-            52->53    0.7660   16.95°    <1.85>     0.91     -1.2/<-3.4>         94   1.370px   1.584px  P S O       1181    1.70  -
-            56->57    0.7327   11.43°     1.32      1.20       +0.4/+0.4        350   1.424px   1.578px  P            623    1.14  -
-            68->69    0.8794    5.27°    <1.54>     1.57     -1.5/<-3.0>        119   1.489px   1.764px  S O          468    0.53  -
-            70->71    1.0839   10.80°     1.27      1.55       -0.8/-0.1        313   1.649px   1.561px  P            547    1.08  -
-            75->76    1.2181   12.08°    <1.51>     0.88       +0.3/+0.0        281   1.246px   1.474px  S            919    1.21  -
-            82->83    0.7371    8.47°    <1.59>     0.48       -1.1/-2.4        169   1.326px   1.481px  S            214    0.85  -
+              7->8    0.7194    1.01°    <1.51>     0.85       -0.6/-1.1        578   1.552px   1.407px  P S         3202    0.10  -
+            16->17    0.1840   30.89°    <1.65>     1.01       -0.6/+0.4        568   1.963px   1.272px  P S         3009    3.08  -
+            27->28    9.1293    6.54°    <1.95>     0.94       -1.6/-2.0         99   1.535px   1.547px  P S         2254    0.65  -
+            37->38    4.6123   63.94°     1.42      1.15       -0.8/-0.3         34   1.408px   1.255px  P           2040    6.38  -
+            52->53    0.7664   17.15°    <1.85>     0.91     -1.3/<-3.6>         97   1.360px   1.673px  P S O       1190    1.71  -
+            56->57    0.7328   11.43°     1.32      1.19       +0.4/+0.4        353   1.402px   1.587px  P            624    1.14  -
+            68->69    0.8797    5.30°    <1.55>     1.59     -1.5/<-3.1>        122   1.474px   1.755px  S O          461    0.53  -
+            70->71    1.0833   10.79°     1.27      1.57       -0.8/-0.1        314   1.626px   1.565px  P            538    1.08  -
+            75->76    1.2159   12.06°    <1.51>     0.88       +0.3/+0.1        285   1.246px   1.530px  S            931    1.20  -
+            82->83    0.7372    8.47°    <1.58>     0.48     -1.2/<-2.6>        168   1.349px   1.517px  S O          211    0.85  -
 
 ================================================================================
 Summary
 ================================================================================
 
 Total: 10 discontinuities in 1 sequence, 0 breaks.
-  Found by one signal:          5
-  Found by two or more signals: 5
+  Found by one signal:          4
+  Found by two or more signals: 6
   A discontinuity is an edge where at least one signal found the
   camera motion irregular; the two counts above say how many signals
   agree on that, not whether it is a break. A break is a
@@ -303,7 +303,7 @@ Total: 10 discontinuities in 1 sequence, 0 breaks.
   < > marks a value past its signal's threshold. Dist and Rot are the step between the edge's two images.
   NearPts = points seen both in the 8 images up to the edge and the 8 after it. RotR = rotation / expected rotation. BREAK = RotR, SharedPts and NearPts all past the break rule.
 Verdict: no breaks
-Completed in 0.34s
+Completed in 0.33s
 ```
 
 The per-frame table shows how far each pose is from where its neighbours on
@@ -331,6 +331,6 @@ This dataset isn't from video — the images were taken from different angles
 around the toy — so the detected discontinuities here are expected large
 changes in viewpoint rather than actual problems, and the verdict is
 `no breaks`. For example, edge 37->38 turns 6.4 times the usual rotation and
-its two images share only 33 points, but the 8 photos before it and the 8
-after it still share 2048 points, so the solve has tied the two stretches
+its two images share only 34 points, but the 8 photos before it and the 8
+after it still share 2040 points, so the solve has tied the two stretches
 together.

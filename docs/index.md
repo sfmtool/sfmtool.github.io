@@ -53,8 +53,10 @@ Configuration file: .../workspace/.sfm-workspace.json
   contrast_threshold: 0.0067
   octave_layers: 3
   max_num_features: 8192
+  image_to_gray: 0.2126*R + 0.7152*G + 0.0722*B
+  feature_prefix_dir: features/sift-sfmtool-9017ec0d2c5dfc401da610578062b53d
 
-# Solve SfM for the specified images using the global GLOMAP solver
+# Solve SfM for the specified images using the global solver
 $ sfm solve -g images/
 Running global SfM with GLOMAP...
 Image files:
