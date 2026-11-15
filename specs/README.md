@@ -97,6 +97,11 @@ it goes.
 **Wording.** Plain language, the viewer's exact words, and steps an agent can
 follow, as `AGENTS.md` says.
 
+**Author-owned passages.** Some passages are the maintainer's own writing,
+named as author-owned in their page's spec (on the home page: why the project
+exists, and about the author). Nobody else rewrites them; an audit may suggest
+a change, with the proposed text, for the maintainer to decide.
+
 ## Page specs
 
 A page spec in `pages/` gives the page's type, the reader's goal, what the

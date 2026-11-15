@@ -175,6 +175,11 @@ page | change the spec | discuss>, one line why.
 A finding is referred to as `docs/<path>` finding `<n>`, and its status lines
 go directly under it.
 
+A finding on a passage the page's spec names as **author-owned** is a
+suggestion only: say what looks improvable and give the proposed text, marked
+`Suggestion for the maintainer`, and never edit the passage or propose it as a
+fix for another session to make.
+
 A page that is right and its spec wrong (the spec describes a job the page no
 longer needs to do) is **change the spec**; a page that drifts from a spec the
 maintainer still wants is **change the page**.
