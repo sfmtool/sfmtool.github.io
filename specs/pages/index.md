@@ -22,8 +22,8 @@ installed `sfmtool`, and goes to Getting Started.
 - What SfM is: the paragraph a newcomer needs to take usable photos.
 - Installation: `pip install sfmtool`, and which platforms have wheels.
 - A link to Getting Started as the place to start.
-- About the author: who made SfM Tool and their background (author-owned,
-  see below).
+- About the author, under the heading **About Mark Wiebe**: who made SfM
+  Tool and their background (author-owned, see below).
 
 **Screenshot:** SfM Explorer showing the newest ground-truth reconstruction
 checked in to sfmtool's `test-data/images/seoul_bull_sculpture/` (today

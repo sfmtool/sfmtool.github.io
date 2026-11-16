@@ -27,7 +27,25 @@ The 3D view draws the points as small squares of photograph.
 
 The change is held in the viewer until **File > Save** writes it to the file.
 
-## 2. Put Image Detail beside Track View
+## 2. Prune covered observations
+
+Some observations are large patches that clutter the view. A smaller
+observation in the same pixels of the same photograph is generally more
+accurate, so prune the larger ones. In the **Scene** panel, right-click the
+reconstruction's row again and choose **Prune Covered Observations**.
+
+![The Scene panel's context menu for the reconstruction's row, with Prune Covered Observations highlighted](images/point-tracks-prune-menu.jpg)
+
+The viewer retires every observation that a smaller one covers in the same
+photograph. It drops each point left with fewer than two observations. The
+3D Viewer's status line reads *Pruned covered observations in …*, with the
+counts. In the run these screenshots come from, 2454 of 74835 observations were
+retired and 182 points dropped, leaving 10149 points. The large squares are
+gone from the 3D view.
+
+![The 3D Viewer after pruning, from the same viewpoint: fewer large squares cover the dino, and the status line reads Pruned covered observations with 2454 of 74835 observations retired and 182 points dropped](images/point-tracks-pruned-3d-view.jpg)
+
+## 3. Put Image Detail beside Track View
 
 In the stock layout, **Image Detail** is a tab behind the **3D Viewer**, and
 **Track View** is on the right. Drag the **Image Detail** tab into the middle
@@ -39,7 +57,7 @@ the right.
 
 ![Three areas side by side: the 3D Viewer with the Track Table tab beside it, Image Detail, and Track View](images/point-tracks-three-panel-layout.jpg)
 
-## 3. Look through a photograph
+## 4. Look through a photograph
 
 In the **Image Browser** at the bottom, double-click the thumbnail labelled
 `…03.jpg` to select it and look through it. That is `dino_dog_toy_03.jpg`,
@@ -59,7 +77,7 @@ the bottom right.
 
 ![Image Detail with the Track Length overlay: red, yellow and green dots on the photograph and a colour bar from 2 to 53 at the bottom right](images/point-tracks-track-length-overlay.jpg)
 
-## 4. Select the longest track in the photograph
+## 5. Select the longest track in the photograph
 
 Click the **Track Table** tab, beside the 3D Viewer tab. Tick **Seen in
 selected image**, so that the table lists only the points seen in
@@ -80,7 +98,7 @@ says what the other columns measure.
 
 ![Track View for the selected point: the header shows track: 53 obs, and the rows start with Img 2, 3, 4, 5, 6 and 9, each with its Crop and Patch](images/point-tracks-track-view.jpg)
 
-## 5. Navigate in camera view
+## 6. Navigate in camera view
 
 Click the **3D Viewer** tab. It is still looking through camera image 2. It
 draws the selected track as lines from the point to each camera that sees it.
@@ -101,7 +119,7 @@ With the pointer over the 3D Viewer:
 These keep camera view. The status line reads *Looking through …* after a
 double-click or Z, and *Selected image …* after `.`, `,` or a click.
 
-## 6. Navigate freely
+## 7. Navigate freely
 
 Hold Shift and drag to pan. On a trackpad, hold Shift and drag two fingers.
 A pan moves the camera and leaves camera view. The photograph behind the
@@ -124,7 +142,7 @@ Orbit and fly until the track's lines all show, as in this screenshot.
 
 ![The 3D Viewer showing the scene from above and behind the cameras, with the selected track's yellow lines running from the point to each camera](images/point-tracks-free-navigation.jpg)
 
-## 7. Move the target
+## 8. Move the target
 
 Hold Alt and drag to look around from where the camera stands. The target
 moves around the camera, instead of the camera moving around the target. While
