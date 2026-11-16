@@ -7,7 +7,7 @@ SfM Tool builds heavily on the work of others, especially [COLMAP](https://colma
 and [OpenCV](https://opencv.org/). Most of what's different is around the workflow you use
 to create SfM reconstructions.
 
-![SfM Explorer showing the dino dog toy reconstruction from Getting Started, with one 3D point selected and lines from it to the cameras that see it](images/sfm-explorer-dino-selected-track.jpg)
+![SfM Explorer showing the Seoul Bull sculpture ground truth drawn as patches, with one point on the bull's back selected, lines from it to the cameras that see it, and its observations in Track View and Image Detail](images/sfm-explorer-seoul-bull-selected-track.jpg)
 
 ## About this Project
 
