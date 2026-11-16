@@ -3,6 +3,12 @@
 SfM Tool is a command-line toolkit (`sfm`) and a desktop viewer (SfM Explorer) for
 building Structure from Motion reconstructions from photographs and inspecting them in 3D.
 
+SfM Tool builds heavily on the work of others, especially [COLMAP](https://colmap.github.io/)
+and [OpenCV](https://opencv.org/). Most of what's different is around the workflow you use
+to create SfM reconstructions.
+
+![SfM Explorer showing the dino dog toy reconstruction from Getting Started, with one 3D point selected and lines from it to the cameras that see it](images/sfm-explorer-dino-selected-track.jpg)
+
 ## About this Project
 
 The goal of this project is to make creating and exploring Structure from Motion (SfM) fun.
@@ -10,72 +16,6 @@ I had a bunch of vacation datasets of interesting scenes sitting around, ready f
 Gaussian splats, but using existing tools wasn't as fun as I imagined it could be. I
 also wanted a project for learning agentic AI coding tools with no expectations
 or restrictions. The result is this project, and I hope you enjoy it if you give it a try!
-
-SfM Tool builds heavily on the work of others, especially [COLMAP](https://colmap.github.io/)
-and [OpenCV](https://opencv.org/). Most of what's different is around the workflow you use
-to create SfM reconstructions.
-
-### The SfM Explorer GUI
-
-Once you have an .sfmr file, you can load it into the SfM Explorer GUI to view it in 3D
-with `sfm explorer <file>.sfmr`.
-In this screenshot, we've loaded the solution created by the below `sfm solve` command.
-By selecting a 3D point, we can view the track it comes from and visualize all the projected
-rays from the cameras.
-
-![SfM Explorer with Seoul Bull sample](./images/sfm-explorer-with-seoul-bull-tiny-images.jpg)
-
-### The `sfm` CLI command
-
-The CLI command `sfm` is the interface for creating and evaluating reconstructions.
-Every reconstruction must be performed within an SfM workspace. This opinionated approach
-makes it easier and more predictable to use the command, and means you don't need to
-repeat options redundantly while using it.
-
-Here's the simplest way to create a workspace and perform an SfM reconstruction with
-a small image dataset.
-
-```
-# Create the workspace and an images directory inside of it
-$ mkdir -p workspace/images
-
-# Copy the images into the workspace
-$ cp /path/to/images/*.jpg workspace/images/
-
-# Enter the workspace
-$ cd workspace
-
-# Initialize the workspace
-$ sfm ws init .
-Initialized workspace: .../workspace
-Configuration file: .../workspace/.sfm-workspace.json
-  feature_tool: sfmtool
-  contrast_threshold: 0.0067
-  octave_layers: 3
-  max_num_features: 8192
-  image_to_gray: 0.2126*R + 0.7152*G + 0.0722*B
-  feature_prefix_dir: features/sift-sfmtool-9017ec0d2c5dfc401da610578062b53d
-
-# Solve SfM for the specified images using the global solver
-$ sfm solve -g images/
-Running global SfM with GLOMAP...
-Image files:
-  .../workspace/images/seoul_bull_sculpture_%02d.jpg (17 files, sequence 1-17)
-...
-Saved reconstruction to: .../workspace/sfmr/20260404-00-solve-seoul_bull_sculpture_1-17.sfmr
-```
-
-Now you can use a variety of commands to inspect the reconstruction.
-
-```
-# Overview of the reconstruction
-$ sfm inspect sfmr/20260404-00-solve-seoul_bull_sculpture_1-17.sfmr
-...
-
-# Per-image reprojection error metrics
-$ sfm analyze --metrics sfmr/20260404-00-solve-seoul_bull_sculpture_1-17.sfmr
-...
-```
 
 ## What is Structure from Motion?
 
@@ -87,10 +27,6 @@ camera at the same time. The structure is a set of 3D points on surfaces that ar
 more than one camera. The motion is each photo's camera position and orientation; the solver
 also estimates each camera's intrinsics, such as focal length and lens distortion.
 
-Recent research is focused on ideas like using feedforward networks to go straight from images
-into 3D representations. This project is not about VGGT or similar techniques, but visualizing their
-output in SfM tool or using them as part of SfM would be interesting to explore.
-
 ## Installation
 
 ```
@@ -101,8 +37,19 @@ Wheels are published for Python 3.14 on x86-64 Linux, x86-64 Windows and Apple s
 macOS. Anywhere else, including Intel macOS, pip builds sfmtool from the source distribution, which
 needs a Rust toolchain at version 1.98 or newer.
 
-See the [getting started tutorial](tutorials/getting-started.md) for a full
-walkthrough.
+## The workflow
+
+In a directory with your photographs in `images/`, three commands make a
+reconstruction and show it:
+
+```
+sfm ws init                     # make the directory a workspace
+sfm solve -g images/            # solve the photographs into a .sfmr file in sfmr/
+sfm explorer sfmr/<file>.sfmr   # view it in SfM Explorer
+```
+
+Start with [Getting Started](tutorials/getting-started.md), which runs these
+on 85 example photographs and shows what each prints.
 
 ## About Me
 
