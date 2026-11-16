@@ -34,8 +34,8 @@ $ cd dino
 
 ## 2. Initialize the workspace
 
-A workspace is a directory whose settings, such as how features are
-extracted, every `sfm` command run in it uses.
+A workspace is a directory with its own settings, such as how features are
+extracted. Every `sfm` command you run inside it uses those settings.
 
 ```
 $ sfm ws init --max-features 4000

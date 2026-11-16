@@ -99,6 +99,19 @@ it goes.
 **Wording.** Plain language, the viewer's exact words, and steps an agent can
 follow, as `AGENTS.md` says.
 
+**Sentences that read easily.** Plain words are not enough: each sentence
+should read naturally aloud on the first pass.
+
+- One idea per sentence. Split a sentence that defines a term and also says
+  what follows from it.
+- Keep the subject near its verb, and put the verb early. Do not front the
+  object of a relative clause ("a directory whose settings … every command
+  uses"); say it in the usual order ("Every command uses its settings").
+- Put examples and asides at the end of a sentence, not between the subject
+  and the verb.
+- Brevity means fewer ideas, not denser sentences: two short sentences beat
+  one compressed one.
+
 **Author-owned passages.** Some passages are the maintainer's own writing,
 named as author-owned in their page's spec (on the home page: why the project
 exists, and about the author). Nobody else rewrites them; an audit may suggest

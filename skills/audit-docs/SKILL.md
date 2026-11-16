@@ -175,6 +175,12 @@ page | change the spec | discuss>, one line why.
 A finding is referred to as `docs/<path>` finding `<n>`, and its status lines
 go directly under it.
 
+Read every sentence of a page for how it reads, not only for its words, as
+the site spec's "Sentences that read easily" asks: a sentence a reader must
+re-read to parse (an inverted relative clause, the verb held back to the end,
+an aside between subject and verb, two ideas compressed into one) is a
+finding, with the rewritten sentence as the proposed fix.
+
 A finding on a passage the page's spec names as **author-owned** is a
 suggestion only: say what looks improvable and give the proposed text, marked
 `Suggestion for the maintainer`, and never edit the passage or propose it as a
