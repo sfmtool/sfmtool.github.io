@@ -17,6 +17,14 @@ navigation is in `zensical.toml`, and the build runs through Pixi:
 - `scripts/add_legacy_redirects.py` keeps the old
   `https://sfmtool.github.io/sfmtool/...` links working. No page may live
   under `docs/sfmtool/`; the script fails the build if one does.
+- Every page has a spec in `specs/pages/`, and `specs/README.md` is the site
+  spec: who the site is for, each page's Diátaxis type, and the shared rules,
+  brevity among them. Read a page's spec before changing the page; when a
+  page's purpose changes, change its spec in the same PR. A new page needs a
+  spec and a row in the site spec's table. The `audit-docs` skill
+  (`skills/audit-docs/`, linked into `.claude/skills/`) audits the pages
+  against the specs and sfmtool `main`, and records where a page falls short
+  in `reports/`.
 - Write in plain language: no metaphors or idioms where a literal phrase says
   the same thing. Name the thing and say what it does.
 - Pull requests are squash-merged, and every commit needs a DCO sign-off
