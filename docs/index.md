@@ -27,6 +27,10 @@ camera at the same time. The structure is a set of 3D points on surfaces that ar
 more than one camera. The motion is each photo's camera position and orientation; the solver
 also estimates each camera's intrinsics, such as focal length and lens distortion.
 
+Recent research is focused on ideas like using feedforward networks to go straight from images
+into 3D representations. This project is not about VGGT or similar techniques, but visualizing their
+output in SfM tool or using them as part of SfM would be interesting to explore.
+
 ## Installation
 
 ```

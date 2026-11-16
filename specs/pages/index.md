@@ -17,6 +17,8 @@ installed `sfmtool`, and goes to Getting Started.
 - What SfM Tool is: the `sfm` command and the SfM Explorer viewer, and that
   it builds on COLMAP and OpenCV.
 - Why the project exists, in the author's voice (author-owned, see below).
+- What the project is not about (feedforward image-to-3D methods such as
+  VGGT), in the author's voice (author-owned, see below).
 - What SfM is: the paragraph a newcomer needs to take usable photos.
 - Installation: `pip install sfmtool`, and which platforms have wheels.
 - A link to Getting Started as the place to start.
@@ -32,7 +34,8 @@ real run.
 
 ## Author-owned passages
 
-The **why the project exists** and **About the author** passages are written
+The **why the project exists**, **what the project is not about** and
+**About the author** passages are written
 by the maintainer, in their own voice. A refresh or a fix leaves their wording
 alone, and an audit does not rewrite them: where an improvement is apparent
 (a stale fact, a broken link, a passage that no longer reads well beside the
