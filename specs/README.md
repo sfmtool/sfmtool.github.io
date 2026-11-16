@@ -92,6 +92,10 @@ that quotes the run. The home page's screenshot shows sfmtool's newest
 checked-in Seoul Bull ground truth instead, as its page spec says. `AGENTS.md`
 says how to take screenshots on copies and what to crop out.
 
+**Light and dark.** The site opens in the reader's operating-system scheme,
+light or dark, and has a toggle (`zensical.toml`). An image or diagram must
+read on both backgrounds.
+
 **Links.** Each tutorial links the page before it and ends with what to read
 next. Link sfmtool specs by their GitHub URL on `main`. Link text says where
 it goes.
