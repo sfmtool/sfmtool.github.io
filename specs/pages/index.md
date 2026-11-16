@@ -25,8 +25,12 @@ installed `sfmtool`, and goes to Getting Started.
 - About the author: who made SfM Tool and their background (author-owned,
   see below).
 
-**Screenshot:** SfM Explorer with the shared run's reconstruction and a
-selected track, to show the reader what they will get.
+**Screenshot:** SfM Explorer showing the newest ground-truth reconstruction
+checked in to sfmtool's `test-data/images/seoul_bull_sculpture/` (today
+`seoul_bull_sculpture_ground_truth_v02.sfmr`), drawn as patches with a
+selected point and its track, to show the reader what they will get. The
+maintainer chooses the view and the point. It is retaken when a newer
+ground-truth version is checked in.
 
 **Commands:** a three-command sketch of the workflow (`sfm ws init`,
 `sfm solve`, `sfm explorer`) with no output, linking Getting Started for the

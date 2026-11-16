@@ -83,12 +83,14 @@ next action).
 - Do not describe in words what a screenshot next to the text already shows.
   The words name what to look for in it.
 
-**Captured output and screenshots.** All of them come from one shared run: the
-Getting Started steps on a copy of `test-data/images/dino_dog_toy` from
-sfmtool `main`, with the later pages working on that run's `.sfmr` file. The
-pages then quote the same file name and counts. `AGENTS.md` says how to take
-screenshots on copies and what to crop out. When a refresh changes the
-captured output, re-capture every page that quotes the run.
+**Captured output and screenshots.** The tutorials and how-to guides take
+them from one shared run: the Getting Started steps on a copy of
+`test-data/images/dino_dog_toy` from sfmtool `main`, with the later pages
+working on that run's `.sfmr` file. The pages then quote the same file name
+and counts. When a refresh changes the captured output, re-capture every page
+that quotes the run. The home page's screenshot shows sfmtool's newest
+checked-in Seoul Bull ground truth instead, as its page spec says. `AGENTS.md`
+says how to take screenshots on copies and what to crop out.
 
 **Links.** Each tutorial links the page before it and ends with what to read
 next. Link sfmtool specs by their GitHub URL on `main`. Link text says where

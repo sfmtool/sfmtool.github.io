@@ -63,7 +63,7 @@ views or positions. I work as a Principal Engineer at AWS on the [Deadline Cloud
 web service that provides render farm/batch computing focused on rendering and related workloads.
 Other projects I've helped create include the [conda package management system](https://conda.org/)
 while building the [Anaconda Distribution](https://www.anaconda.com/download), introducing the
-[EinSum](https://numpy.org/doc/2.2/reference/generated/numpy.einsum.html) function to NumPy, and
+[einsum](https://numpy.org/doc/stable/reference/generated/numpy.einsum.html) function to NumPy, and
 I played a major role creating tools at [Frantic Films](https://en.wikipedia.org/wiki/Frantic_Films)
 and at [Thinkbox Software](https://aws.amazon.com/media-services/thinkbox/) (later acquired by AWS) such as
 Deadline, Flood, Krakatoa, XMesh, Frost, Sequoia and more.
