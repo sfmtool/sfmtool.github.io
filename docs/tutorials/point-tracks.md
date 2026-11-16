@@ -10,19 +10,18 @@ across photographs. These steps start from the reconstruction made in
 Track View measures each observation against a small square of the surface,
 the point's patch, and a fresh solve has no patches yet. In the **Scene**
 panel, right-click the reconstruction's row, named after its file
-(`20260413-00-solve-dino_dog_toy_1-85` in the run these screenshots come
+(`20261115-00-solve-dino_dog_toy_1-85` in the run these screenshots come
 from), and choose **Convert to Embedded Patches**.
 
 ![The Scene panel's context menu for the reconstruction's row, with Convert to Embedded Patches highlighted](images/point-tracks-convert-menu.jpg)
 
-The 3D Viewer's status line reads *Converted
-20260413-00-solve-dino_dog_toy_1-85 to embedded patches: … points framed, 85
-images read*, the row's name gains a leading `*` for an unsaved change, and a
-**Patches** row appears under it.
+The row's name gains a leading `*` for an unsaved change, and a **Style**
+line with **Dots** and **Patches** appears under the **Points** row. Click
+**Patches** to draw each point as its patch.
 
-![The Scene panel after the conversion: the row's name starts with an asterisk and a Patches row is listed under Points](images/point-tracks-scene-patches-row.jpg)
+![The Scene panel after the conversion: the row's name starts with an asterisk, and the Style line under Points has Patches selected](images/point-tracks-scene-style-line.jpg)
 
-The 3D view draws the patches as small squares of photograph.
+The 3D view draws the points as small squares of photograph.
 
 ![The 3D Viewer drawing the dino and the table as many small squares of photograph](images/point-tracks-patches-in-3d-view.jpg)
 
@@ -42,54 +41,44 @@ the right.
 
 ## 3. Look through a photograph
 
-In the **Image Browser** at the bottom, double-click the thumbnail numbered
-**2** to select it and look through it. The Image Browser numbers images from
-0 and the file names count from 01, so this is `dino_dog_toy_03.jpg` (camera
-image 2).
+In the **Image Browser** at the bottom, double-click the thumbnail labelled
+`…03.jpg`, `dino_dog_toy_03.jpg` (camera image 2), to select it and look
+through it.
 
-![The Image Browser with thumbnail 2 outlined as the selected image](images/point-tracks-image-browser.jpg)
+![The Image Browser with the thumbnail labelled …03.jpg outlined as the selected image](images/point-tracks-image-browser.jpg)
 
 The 3D Viewer's status line reads *Looking through
-images/dino_dog_toy_03.jpg*, the 3D view shows the photograph from where its
-camera stood, and Image Detail shows the same photograph.
+images/dino_dog_toy_03.jpg*, and Image Detail shows the same photograph.
 
 ![The 3D Viewer looking through dino_dog_toy_03.jpg, with its status line, beside Image Detail showing the same photograph](images/point-tracks-look-through.jpg)
 
 In Image Detail's toolbar, set **Overlay** to **Track Length**. Each feature
-with a track becomes a dot coloured by how many observations its track has,
-from red for the shortest through yellow to green for the longest, and a
-**Track Length** colour bar at the bottom right gives the range.
+with a track becomes a dot coloured by its track's length, from red for the
+shortest to green for the longest, with a **Track Length** colour bar at the
+bottom right.
 
-![Image Detail with the Track Length overlay: red, yellow and green dots on the photograph and a colour bar from 2 to 55 at the bottom right](images/point-tracks-track-length-overlay.jpg)
+![Image Detail with the Track Length overlay: red, yellow and green dots on the photograph and a colour bar from 2 to 53 at the bottom right](images/point-tracks-track-length-overlay.jpg)
 
 ## 4. Select the longest track in the photograph
 
 Click the **Track Table** tab, beside the 3D Viewer tab. Tick **Seen in
 selected image**, so that the table lists only the points seen in
 `dino_dog_toy_03.jpg`. Click the **Track** heading twice to sort by track
-length, longest first (the first click sorts shortest first; after the
-second, the heading shows a downward triangle). Click the top row to select
-its point.
+length, longest first (after the second click, the heading shows a downward
+triangle). Click the top row to select its point.
 
-The row turns blue, and Track View's header shows the point's ID and
-*track: N obs*, where N is the number in the row's **Track** cell.
+The row turns blue, and Track View's header shows *track: N obs*, where N is
+the number in the row's **Track** cell.
 
-![The Track Table with Seen in selected image ticked, sorted by Track with a downward triangle, and the top row, track length 55, selected in blue](images/point-tracks-track-table.jpg)
+![The Track Table with Seen in selected image ticked, sorted by Track with a downward triangle, and the top row, track length 53, selected in blue](images/point-tracks-track-table.jpg)
 
-Track View lists one row per observation. Its columns are **Img** (the camera
-image index), **Crop** (the photograph around the patch), **Patch** (that
-patch drawn square), **Verdict**, **ZNCC** (how closely this photograph's
-view of the patch matches the point's stored patch), **Self-similarity**,
-**Proj. err** (the reprojection error, in pixels over degrees), **Shift**,
-**Zoom**, **Reference**, **Status** and **Name** (the file name); scroll
-sideways to see them all.
+Track View lists one row for each photograph that sees the point. **Img** is
+the camera image index, **Crop** the photograph around the point, and
+**Patch** the point's patch as that photograph sees it. sfmtool's
+[`track-view.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/gui/track-view.md)
+says what the other columns measure.
 
-![Track View for the selected point: the header ends with track: 55 obs, and the rows show the Img, Crop, Patch, Verdict and ZNCC columns, with Img 5 on two rows](images/point-tracks-track-view.jpg)
-
-*N obs* counts observations, not photographs. One photograph can hold more
-than one observation of the same point, which a GLOMAP solve can produce, so
-the same **Img** number can appear on two rows. The Track Table's **Repeat
-obs.** column, next to **Track**, counts those extra observations.
+![Track View for the selected point: the header shows track: 53 obs, and the rows start with Img 2, 3, 4, 5, 6 and 9, each with its Crop and Patch](images/point-tracks-track-view.jpg)
 
 ## 5. Navigate in camera view
 
@@ -154,5 +143,10 @@ The compass stays drawn without Alt.
 ![The target drawn in the 3D view as a cyan ring with a spike pointing up](images/point-tracks-target-compass.jpg)
 
 Orbiting turns around the compass's up spike. If the table looks tilted
-against the compass, press Q or E to tilt the horizon until the compass lies
-flat on the table; orbiting is then more comfortable.
+against the compass, press Q or E until the compass lies flat on the table.
+
+## Next steps
+
+- [Inspecting a Reconstruction](inspecting.md): check a reconstruction from
+  the command line, and find the images and parts of the camera path to look
+  at here.
