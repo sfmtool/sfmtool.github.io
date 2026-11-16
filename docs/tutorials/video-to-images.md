@@ -27,8 +27,7 @@ frame down until its long side is at most 1920 pixels (`--max-frame-size`).
 `sfm extract-frames --help` lists these and the other options.
 
 The frames are in `dino_orbit/images/dino_orbit/`, named `frame_000001.jpg`,
-`frame_000002.jpg` and so on, in the order they appear in the video: here 60
-frames, 10 for each of the video's 6 seconds.
+`frame_000002.jpg` and so on, in the order they appear in the video.
 
 ## 2. Solve the frames
 

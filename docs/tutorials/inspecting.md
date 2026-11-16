@@ -35,6 +35,7 @@ Observation statistics:
   Median observations per point: 5
 ...
 Integrity: OK
+...
 ```
 
 - **Images** is the number of photographs the solve placed; here all 85.
@@ -126,6 +127,7 @@ $ sfm motion sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
             82->83    0.7373    8.47°    <1.59>     0.48       -1.1/-2.5        171   1.358px   1.533px  S            217    0.85  -
 ...
 Verdict: no breaks
+...
 ```
 
 Each row is a discontinuity between two photographs, and the **Break** column

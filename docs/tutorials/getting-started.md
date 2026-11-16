@@ -16,6 +16,10 @@ and the table have enough texture to give many SIFT features.
 $ pip install sfmtool
 ```
 
+SfM Tool needs Python 3.14;
+[Installation](../index.md#installation) on the home page lists the platforms
+it has wheels for.
+
 These commands download only the dataset's directory of the sfmtool
 repository, about 40 MB, and copy the photographs into `dino/images/`. They
 need [git](https://git-scm.com/).
