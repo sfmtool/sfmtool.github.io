@@ -1,21 +1,22 @@
 # Inspecting a Reconstruction
 
-Find out from the command line whether a reconstruction is sound. The
-commands also show which images or parts of the camera path to look at in SfM
-Explorer.
+Look at the properties of a reconstruction from the command line: what it
+holds, how its points and errors are distributed, how its images compare, how
+far the scene is from each camera, and how the camera moves from photograph to
+photograph.
 
 | Question | Command |
 |---|---|
-| How big is it, how accurate, is the file intact? | `sfm inspect` (`-v` for detail) |
-| Which images fit worst? | `sfm analyze --metrics` |
+| What does it hold, and how are its points distributed? | `sfm inspect` (`-v` for the distributions) |
+| How do the images compare? | `sfm analyze --metrics` |
 | How far away is the scene from each camera? | `sfm analyze --z-range` |
-| Is the camera path broken anywhere? | `sfm motion` |
+| How does the camera move between photographs? | `sfm motion` |
 
 The examples run on the file from [Getting Started](getting-started.md#3-solve).
 Each output is cut to the lines that answer its question, with `...` marking
 the cuts.
 
-## How big is it, how accurate, is the file intact?
+## What does it hold, and how are its points distributed?
 
 ```
 $ sfm inspect -v sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
@@ -26,32 +27,48 @@ Reconstruction summary:
   3D points: 10331
   Observations: 74835
 ...
+3D Point statistics:
+  Position range:
+    X: [-14.305, 33.646]
+    X distribution:
+      ▁ ▁▁▁      ▁▁▁▁▁▁▂▆█▆▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁ ▁▁            ▁▁       ▁
+      -14.305                                                   33.646
+...
   Reprojection error:
     Mean: 1.584 pixels
     Median: 1.509 pixels
 ...
+    Error distribution:
+      ▁▂▃▅▆▆▇█▆▅▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▁▁▁▁▁ ▁▁ ▁▁▁▁▁▁▁▁▁▁ ▁▁▁ ▁▁▁▁ ▁▁ ▁▁
+      0.031                                                     13.702
+...
 Observation statistics:
-  Min observations per point: 2
-  Max observations per point: 53
+...
   Mean observations per point: 7.24
   Median observations per point: 5
+    Track length distribution:
+      ▁█▄▂ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁▁▁▁ ▁  ▁
+      2.000                                                     53.000
 ...
 Integrity: OK
 ...
 ```
 
 - **Images** is the number of photographs the solve placed; here all 85.
+- Each **distribution** is a histogram between the two values printed under
+  it. The X distribution shows most points in a narrow band, the toy, with a
+  thin spread of farther points around it; `-v` prints Y and Z the same way.
 - **Reprojection error** is the distance, in pixels, from each feature to
-  where its 3D point projects in that photograph. Smaller is better.
+  where its 3D point projects in that photograph.
 - **Observations per point** is the track length: the number of photographs
-  that see a point. Longer tracks locate a point more precisely.
+  that see a point. Half the points here are seen in 5 photographs or fewer.
 - **Integrity: OK** says the file's contents match the hashes stored in it.
 
 Without `-v`, `sfm inspect` prints these counts and the integrity check on one
 screen. [`inspect-command.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/cli/reconstruction/inspect-command.md)
 describes every section.
 
-## Which images fit worst?
+## How do the images compare?
 
 ```
 $ sfm analyze --metrics sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
@@ -69,10 +86,10 @@ images/dino_dog_toy_16.jpg                          1005     1.970     1.757    
 ...
 ```
 
-The images are listed worst first, by mean reprojection error. An image whose
-error is well above the rest gets `!` or `!!` in the **Flag** column. A placed
-image that sees no points gets `--`. Those are the images to look at. No image
-is flagged here.
+Each image has a row with its observation count, its reprojection errors and
+a histogram of them, sorted by mean error, highest first. An image whose error
+is well above the rest gets `!` or `!!` in the **Flag** column, and a placed
+image that sees no points gets `--`. No image is flagged here.
 
 ## How far away is the scene from each camera?
 
@@ -101,12 +118,12 @@ Per-image Z ranges:
 reconstruction's units, which have no set scale. Here `dino_dog_toy_85.jpg`
 was taken about a quarter as far from the toy as `dino_dog_toy_03.jpg`.
 
-## Is the camera path broken anywhere?
+## How does the camera move between photographs?
 
-`sfm motion` follows the photographs in file-number order. It lists the
-discontinuities: the places where the camera's motion is irregular. A
-**break** is a discontinuity where the solve placed the camera path on its two
-sides inconsistently. Breaks are the result that matters.
+`sfm motion` follows the photographs in file-number order and measures each
+step of the camera's motion. It lists the discontinuities, the places where
+that motion is irregular. A **break** is a discontinuity where the solve
+placed the camera path on its two sides inconsistently.
 
 ```
 $ sfm motion sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
@@ -133,6 +150,6 @@ Verdict: no breaks
 Each row is a discontinuity between two photographs. The **Break** column
 says `BREAK` for a break. The last line, `Verdict:`, names the breaks or says
 `no breaks`. These photographs were taken around the toy, not as a video, so
-the jumps in viewpoint are expected discontinuities. There are no breaks.
+the jumps in viewpoint are expected discontinuities, and there are no breaks.
 [`motion-command.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/cli/reconstruction/motion-command.md)
 gives the break rule and what each column and signal means.
