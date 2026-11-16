@@ -55,7 +55,7 @@ sfm explorer sfmr/<file>.sfmr   # view it in SfM Explorer
 Start with [Getting Started](tutorials/getting-started.md), which runs these
 on 85 example photographs and shows what each prints.
 
-## About Me
+## About Mark Wiebe
 
 I'm Mark Wiebe, and I've long had a soft spot for everything to do with capturing, reconstructing,
 and rendering 3D. This is a personal project, all views are my own and do not reflect Amazon's
