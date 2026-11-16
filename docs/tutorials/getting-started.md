@@ -20,17 +20,19 @@ SfM Tool needs Python 3.14.
 [Installation](../index.md#installation) on the home page lists the platforms
 it has wheels for.
 
-These commands download only the dataset's directory from the sfmtool
-repository, about 40 MB. They then copy the photographs into `dino/images/`.
-They need [git](https://git-scm.com/).
+Download the photographs,
+[`dino_dog_toy.zip`](https://github.com/sfmtool/sfmtool/releases/download/v0.3/dino_dog_toy.zip)
+(42 MB), and unzip it. It holds the 85 photographs in `dino/images/`.
 
 ```
-$ git clone --depth 1 --filter=blob:none --sparse https://github.com/sfmtool/sfmtool
-$ git -C sfmtool sparse-checkout set test-data/images/dino_dog_toy
-$ mkdir -p dino/images
-$ cp sfmtool/test-data/images/dino_dog_toy/*.jpg dino/images/
+$ curl -LO https://github.com/sfmtool/sfmtool/releases/download/v0.3/dino_dog_toy.zip
+$ unzip dino_dog_toy.zip
 $ cd dino
 ```
+
+In Windows PowerShell, use
+`Invoke-WebRequest <link> -OutFile dino_dog_toy.zip` and
+`Expand-Archive dino_dog_toy.zip .` for the first two commands.
 
 ## 2. Initialize the workspace
 
