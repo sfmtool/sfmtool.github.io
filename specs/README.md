@@ -47,11 +47,15 @@ doing or knowing, and is the reader learning or working?
 
 The navigation in `zensical.toml` has a section per type: **Tutorials**
 holds Getting Started and Viewing 3D Point Tracks, and **How-to guides** holds
-Inspecting a Reconstruction and Converting Video to Image Sequences.
+Inspecting a Reconstruction and Converting Video to Image Sequences. Each
+section's title links to a short section page that lists its pages; the arrow
+beside the title expands and collapses the section.
 
 | Page | Type | Spec |
 |---|---|---|
 | `docs/index.md` | Landing page (short explanation, then where to start) | [index.md](pages/index.md) |
+| `docs/tutorials/index.md` | Section page for Tutorials | [tutorials-index.md](pages/tutorials-index.md) |
+| `docs/how-to/index.md` | Section page for How-to guides | [how-to-index.md](pages/how-to-index.md) |
 | `docs/tutorials/getting-started.md` | Tutorial | [getting-started.md](pages/getting-started.md) |
 | `docs/tutorials/point-tracks.md` | Tutorial | [point-tracks.md](pages/point-tracks.md) |
 | `docs/tutorials/inspecting.md` | How-to guide | [inspecting.md](pages/inspecting.md) |

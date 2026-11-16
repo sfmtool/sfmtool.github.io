@@ -18,17 +18,22 @@ repo_name = "sfmtool/sfmtool"
 nav = [
   { "Home" = "index.md" },
   { "Tutorials" = [
+    "tutorials/index.md",
     { "Getting Started" = "tutorials/getting-started.md" },
     { "Viewing 3D Point Tracks" = "tutorials/point-tracks.md" },
   ]},
   { "How-to guides" = [
+    "how-to/index.md",
     { "Inspecting a Reconstruction" = "tutorials/inspecting.md" },
     { "Converting Video to Image Sequences" = "tutorials/video-to-images.md" },
   ]},
 ]
 
 [project.theme]
-features = ["navigation.expand"]
+# navigation.indexes makes a section's title a link to the section's own page,
+# its index.md listed first, while the arrow beside it expands and collapses
+# the section.
+features = ["navigation.expand", "navigation.indexes"]
 # The SfM Explorer application icon: a copy of
 # `crates/sfm-explorer/assets/icon/sfm-explorer-icon-64.png` in the `sfmtool`
 # repository, where the script that renders it from its SVG lives.
