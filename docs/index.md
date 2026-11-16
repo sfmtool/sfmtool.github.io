@@ -1,7 +1,13 @@
 # The Structure from Motion Tool
 
-SfM Tool is a command-line toolkit (`sfm`) and a desktop viewer (SfM Explorer) for
-building Structure from Motion reconstructions from photographs and inspecting them in 3D.
+SfM Tool is a command-line toolkit (`sfm`) and a desktop viewer (SfM Explorer). It builds
+Structure from Motion reconstructions from photographs and shows them in 3D.
+
+SfM Tool builds heavily on the work of others, especially [COLMAP](https://colmap.github.io/)
+and [OpenCV](https://opencv.org/). Most of what it does differently is in the workflow you use
+to create SfM reconstructions.
+
+![SfM Explorer showing the Seoul Bull sculpture ground truth drawn as patches. One point on the bull's back is selected, with lines from it to the cameras that see it, and Track View and Image Detail show its observations](images/sfm-explorer-seoul-bull-selected-track.jpg)
 
 ## About this Project
 
@@ -11,80 +17,14 @@ Gaussian splats, but using existing tools wasn't as fun as I imagined it could b
 also wanted a project for learning agentic AI coding tools with no expectations
 or restrictions. The result is this project, and I hope you enjoy it if you give it a try!
 
-SfM Tool builds heavily on the work of others, especially [COLMAP](https://colmap.github.io/)
-and [OpenCV](https://opencv.org/). Most of what's different is around the workflow you use
-to create SfM reconstructions.
-
-### The SfM Explorer GUI
-
-Once you have an .sfmr file, you can load it into the SfM Explorer GUI to view it in 3D
-with `sfm explorer <file>.sfmr`.
-In this screenshot, we've loaded the solution created by the below `sfm solve` command.
-By selecting a 3D point, we can view the track it comes from and visualize all the projected
-rays from the cameras.
-
-![SfM Explorer with Seoul Bull sample](./images/sfm-explorer-with-seoul-bull-tiny-images.jpg)
-
-### The `sfm` CLI command
-
-The CLI command `sfm` is the interface for creating and evaluating reconstructions.
-Every reconstruction must be performed within an SfM workspace. This opinionated approach
-makes it easier and more predictable to use the command, and means you don't need to
-repeat options redundantly while using it.
-
-Here's the simplest way to create a workspace and perform an SfM reconstruction with
-a small image dataset.
-
-```
-# Create the workspace and an images directory inside of it
-$ mkdir -p workspace/images
-
-# Copy the images into the workspace
-$ cp /path/to/images/*.jpg workspace/images/
-
-# Enter the workspace
-$ cd workspace
-
-# Initialize the workspace
-$ sfm ws init .
-Initialized workspace: .../workspace
-Configuration file: .../workspace/.sfm-workspace.json
-  feature_tool: sfmtool
-  contrast_threshold: 0.0067
-  octave_layers: 3
-  max_num_features: 8192
-  image_to_gray: 0.2126*R + 0.7152*G + 0.0722*B
-  feature_prefix_dir: features/sift-sfmtool-9017ec0d2c5dfc401da610578062b53d
-
-# Solve SfM for the specified images using the global solver
-$ sfm solve -g images/
-Running global SfM with GLOMAP...
-Image files:
-  .../workspace/images/seoul_bull_sculpture_%02d.jpg (17 files, sequence 1-17)
-...
-Saved reconstruction to: .../workspace/sfmr/20260404-00-solve-seoul_bull_sculpture_1-17.sfmr
-```
-
-Now you can use a variety of commands to inspect the reconstruction.
-
-```
-# Overview of the reconstruction
-$ sfm inspect sfmr/20260404-00-solve-seoul_bull_sculpture_1-17.sfmr
-...
-
-# Per-image reprojection error metrics
-$ sfm analyze --metrics sfmr/20260404-00-solve-seoul_bull_sculpture_1-17.sfmr
-...
-```
-
 ## What is Structure from Motion?
 
-In SfM, you start with a scene that is static and take photographs
-of the scene from multiple different poses. Importantly, the poses should be in different
-positions around the scene, not looking around from one position. Starting from just
+In SfM, you take photographs of a static scene from multiple different poses.
+Importantly, take them from different positions around the scene, not by turning around
+in one position. Starting from just
 the photographs, the SfM solver estimates the structure of the scene and the motion of the
 camera at the same time. The structure is a set of 3D points on surfaces that are visible from
-more than one camera. The motion is each photo's camera position and orientation; the solver
+more than one camera. The motion is each photo's camera position and orientation. The solver
 also estimates each camera's intrinsics, such as focal length and lens distortion.
 
 Recent research is focused on ideas like using feedforward networks to go straight from images
@@ -98,11 +38,22 @@ pip install sfmtool
 ```
 
 Wheels are published for Python 3.14 on x86-64 Linux, x86-64 Windows and Apple silicon
-macOS. Anywhere else, including Intel macOS, pip builds sfmtool from the source distribution, which
-needs a Rust toolchain at version 1.98 or newer.
+macOS. Anywhere else, including Intel macOS, pip builds sfmtool from the source distribution.
+That build needs a Rust toolchain at version 1.98 or newer.
 
-See the [getting started tutorial](tutorials/getting-started.md) for a full
-walkthrough.
+## The workflow
+
+Three commands make a reconstruction and show it. Run them in a directory that
+has your photographs in `images/`:
+
+```
+sfm ws init                     # make the directory a workspace
+sfm solve -g images/            # solve the photographs into a .sfmr file in sfmr/
+sfm explorer sfmr/<file>.sfmr   # view it in SfM Explorer
+```
+
+Start with [Getting Started](tutorials/getting-started.md), which runs these
+on 85 example photographs and shows what each prints.
 
 ## About Me
 
@@ -112,7 +63,7 @@ views or positions. I work as a Principal Engineer at AWS on the [Deadline Cloud
 web service that provides render farm/batch computing focused on rendering and related workloads.
 Other projects I've helped create include the [conda package management system](https://conda.org/)
 while building the [Anaconda Distribution](https://www.anaconda.com/download), introducing the
-[EinSum](https://numpy.org/doc/2.2/reference/generated/numpy.einsum.html) function to NumPy, and
+[einsum](https://numpy.org/doc/stable/reference/generated/numpy.einsum.html) function to NumPy, and
 I played a major role creating tools at [Frantic Films](https://en.wikipedia.org/wiki/Frantic_Films)
 and at [Thinkbox Software](https://aws.amazon.com/media-services/thinkbox/) (later acquired by AWS) such as
 Deadline, Flood, Krakatoa, XMesh, Frost, Sequoia and more.

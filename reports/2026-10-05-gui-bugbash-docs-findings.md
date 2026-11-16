@@ -42,6 +42,11 @@ this file once nothing in it is still worth tracking.
 > warnings (the two quoted below among them) do not mean the solve failed,
 > branch `getting-started-refresh`. Step 1 still gives no command to download
 > the 85 images._
+>
+> _Status (2026-11-15): **Done** — Getting Started's step 1 now downloads the
+> 85 images with a sparse `git clone` of `test-data/images/dino_dog_toy` and
+> copies them into `dino/images/`, the last of the four items, branch
+> `docs-content-refresh`._
 
 The CLI steps run word for word: 85 of 85 images registered in 51 s. Four
 things would help a new reader:
