@@ -1,9 +1,9 @@
 # Getting Started
 
 Make your first 3D reconstruction from a set of photographs and look at it in
-SfM Explorer. SfM Tool extracts the SIFT features itself, and uses
-[COLMAP](https://colmap.github.io/), run through its Python bindings pycolmap,
-to match them and to solve.
+SfM Explorer. SfM Tool extracts the SIFT features itself. It uses
+[COLMAP](https://colmap.github.io/) to match them and to solve, through
+COLMAP's Python bindings, pycolmap.
 
 The photographs are the
 [dino dog toy dataset](https://github.com/sfmtool/sfmtool/tree/main/test-data/images/dino_dog_toy):
@@ -16,13 +16,13 @@ and the table have enough texture to give many SIFT features.
 $ pip install sfmtool
 ```
 
-SfM Tool needs Python 3.14;
+SfM Tool needs Python 3.14.
 [Installation](../index.md#installation) on the home page lists the platforms
 it has wheels for.
 
-These commands download only the dataset's directory of the sfmtool
-repository, about 40 MB, and copy the photographs into `dino/images/`. They
-need [git](https://git-scm.com/).
+These commands download only the dataset's directory from the sfmtool
+repository, about 40 MB. They then copy the photographs into `dino/images/`.
+They need [git](https://git-scm.com/).
 
 ```
 $ git clone --depth 1 --filter=blob:none --sparse https://github.com/sfmtool/sfmtool
@@ -44,16 +44,17 @@ Initialized workspace: .../dino
   feature_prefix_dir: features/sift-sfmtool-321fc2aaf62cc4697adafe94c11e4642
 ```
 
-The workspace extracts at most 4000 SIFT features from each image, and stores
-them under the `feature_prefix_dir` it prints, inside the images directory.
+The workspace extracts at most 4000 SIFT features from each image. It stores
+them inside the images directory, under the `feature_prefix_dir` that
+`sfm ws init` printed.
 
 ## 3. Solve
 
 The solve extracts the features, matches them across the photographs, and
 works out where each camera stood and where the 3D points are.
-`--max-features 2000` uses the 2000 largest of each image's 4000 features:
-fewer features match faster, and the stored 4000 let a later solve use more
-without extracting them again.
+`--max-features 2000` makes the solve use the 2000 largest of each image's
+4000 features. Fewer features match faster. The workspace still stores all
+4000, so a later solve can use more without extracting them again.
 
 ```
 $ sfm solve -g images/ --max-features 2000
@@ -65,16 +66,16 @@ Saved reconstruction to: .../dino/sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
 Completed in 54.25s
 ```
 
-The `...` stands for about a hundred lines of feature extraction and COLMAP
-log. Its warnings, such as *"Less than 50% of cameras have prior focal
-lengths"*, do not mean the solve failed: the last lines say how many images
-and points it found and where it saved them. The solve gives slightly
-different results each time it runs, so your counts and time will differ, and
-so will the date that starts the file name.
+The `...` stands for about a hundred lines that feature extraction and COLMAP
+print. Those lines include warnings, such as *"Less than 50% of cameras have
+prior focal lengths"*. The warnings do not mean the solve failed: the last
+lines say how many images and points the solve found and where it saved them.
+The solve gives slightly different results each time it runs, so your counts
+and time will differ. The date that starts the file name will differ too.
 
 ## 4. Explore in 3D
 
-Open the file the solve saved in SfM Explorer:
+Open the saved reconstruction in SfM Explorer:
 
 ```
 $ sfm explorer sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
@@ -82,7 +83,7 @@ $ sfm explorer sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
 
 On Linux, SfM Explorer needs a Vulkan driver.
 
-![SfM Explorer with dino dog toy reconstruction](images/dino-in-sfm-explorer.jpg)
+![SfM Explorer with the dino dog toy reconstruction](images/dino-in-sfm-explorer.jpg)
 
 ## Next steps
 

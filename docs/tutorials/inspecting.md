@@ -1,7 +1,8 @@
 # Inspecting a Reconstruction
 
-Find out from the command line whether a reconstruction is sound, and which
-images or parts of the camera path to look at in SfM Explorer.
+Find out from the command line whether a reconstruction is sound. The
+commands also show which images or parts of the camera path to look at in SfM
+Explorer.
 
 | Question | Command |
 |---|---|
@@ -10,8 +11,9 @@ images or parts of the camera path to look at in SfM Explorer.
 | How far away is the scene from each camera? | `sfm analyze --z-range` |
 | Is the camera path broken anywhere? | `sfm motion` |
 
-The examples run on the file from [Getting Started](getting-started.md#3-solve),
-and the output is cut with `...` to the lines that answer each question.
+The examples run on the file from [Getting Started](getting-started.md#3-solve).
+Each output is cut to the lines that answer its question, with `...` marking
+the cuts.
 
 ## How big is it, how accurate, is the file intact?
 
@@ -39,11 +41,10 @@ Integrity: OK
 ```
 
 - **Images** is the number of photographs the solve placed; here all 85.
-- **Reprojection error** is how far, in pixels, each 3D point lands from the
-  feature it was seen at, when projected into that photograph. Smaller is
-  better.
+- **Reprojection error** is the distance, in pixels, from each feature to
+  where its 3D point projects in that photograph. Smaller is better.
 - **Observations per point** is the track length: the number of photographs
-  that see a point. Longer tracks pin a point down better.
+  that see a point. Longer tracks locate a point more precisely.
 - **Integrity: OK** says the file's contents match the hashes stored in it.
 
 Without `-v`, `sfm inspect` prints these counts and the integrity check on one
@@ -69,9 +70,9 @@ images/dino_dog_toy_16.jpg                          1005     1.970     1.757    
 ```
 
 The images are listed worst first, by mean reprojection error. An image whose
-error is well above the rest gets `!` or `!!` in the **Flag** column, and one
-the solve placed but that sees no points gets `--`; those are the images to
-look at. No image is flagged here.
+error is well above the rest gets `!` or `!!` in the **Flag** column. A placed
+image that sees no points gets `--`. Those are the images to look at. No image
+is flagged here.
 
 ## How far away is the scene from each camera?
 
@@ -96,17 +97,16 @@ Per-image Z ranges:
 ...
 ```
 
-`med=` is the median depth of the points a camera sees, in the
+`med=` is the median depth of the points a camera sees. It is in the
 reconstruction's units, which have no set scale. Here `dino_dog_toy_85.jpg`
-was taken at about a quarter of the distance from the toy that
-`dino_dog_toy_03.jpg` was.
+was taken about a quarter as far from the toy as `dino_dog_toy_03.jpg`.
 
 ## Is the camera path broken anywhere?
 
-`sfm motion` follows the photographs in file-number order and lists the places
-where the camera's motion is irregular, the discontinuities. A **break** is
-a discontinuity where the solve put the camera path on either side in
-inconsistent places; it is the result that matters.
+`sfm motion` follows the photographs in file-number order. It lists the
+discontinuities: the places where the camera's motion is irregular. A
+**break** is a discontinuity where the solve placed the camera path on its two
+sides inconsistently. Breaks are the result that matters.
 
 ```
 $ sfm motion sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
@@ -130,9 +130,9 @@ Verdict: no breaks
 ...
 ```
 
-Each row is a discontinuity between two photographs, and the **Break** column
+Each row is a discontinuity between two photographs. The **Break** column
 says `BREAK` for a break. The last line, `Verdict:`, names the breaks or says
 `no breaks`. These photographs were taken around the toy, not as a video, so
-the jumps in viewpoint are expected discontinuities, and there are no breaks.
+the jumps in viewpoint are expected discontinuities. There are no breaks.
 [`motion-command.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/cli/reconstruction/motion-command.md)
 gives the break rule and what each column and signal means.

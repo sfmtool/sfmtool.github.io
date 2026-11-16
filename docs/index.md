@@ -1,13 +1,13 @@
 # The Structure from Motion Tool
 
-SfM Tool is a command-line toolkit (`sfm`) and a desktop viewer (SfM Explorer) for
-building Structure from Motion reconstructions from photographs and inspecting them in 3D.
+SfM Tool is a command-line toolkit (`sfm`) and a desktop viewer (SfM Explorer). It builds
+Structure from Motion reconstructions from photographs and shows them in 3D.
 
 SfM Tool builds heavily on the work of others, especially [COLMAP](https://colmap.github.io/)
-and [OpenCV](https://opencv.org/). Most of what's different is around the workflow you use
+and [OpenCV](https://opencv.org/). Most of what it does differently is in the workflow you use
 to create SfM reconstructions.
 
-![SfM Explorer showing the Seoul Bull sculpture ground truth drawn as patches, with one point on the bull's back selected, lines from it to the cameras that see it, and its observations in Track View and Image Detail](images/sfm-explorer-seoul-bull-selected-track.jpg)
+![SfM Explorer showing the Seoul Bull sculpture ground truth drawn as patches. One point on the bull's back is selected, with lines from it to the cameras that see it, and Track View and Image Detail show its observations](images/sfm-explorer-seoul-bull-selected-track.jpg)
 
 ## About this Project
 
@@ -19,12 +19,12 @@ or restrictions. The result is this project, and I hope you enjoy it if you give
 
 ## What is Structure from Motion?
 
-In SfM, you start with a scene that is static and take photographs
-of the scene from multiple different poses. Importantly, the poses should be in different
-positions around the scene, not looking around from one position. Starting from just
+In SfM, you take photographs of a static scene from multiple different poses.
+Importantly, take them from different positions around the scene, not by turning around
+in one position. Starting from just
 the photographs, the SfM solver estimates the structure of the scene and the motion of the
 camera at the same time. The structure is a set of 3D points on surfaces that are visible from
-more than one camera. The motion is each photo's camera position and orientation; the solver
+more than one camera. The motion is each photo's camera position and orientation. The solver
 also estimates each camera's intrinsics, such as focal length and lens distortion.
 
 Recent research is focused on ideas like using feedforward networks to go straight from images
@@ -38,13 +38,13 @@ pip install sfmtool
 ```
 
 Wheels are published for Python 3.14 on x86-64 Linux, x86-64 Windows and Apple silicon
-macOS. Anywhere else, including Intel macOS, pip builds sfmtool from the source distribution, which
-needs a Rust toolchain at version 1.98 or newer.
+macOS. Anywhere else, including Intel macOS, pip builds sfmtool from the source distribution.
+That build needs a Rust toolchain at version 1.98 or newer.
 
 ## The workflow
 
-In a directory with your photographs in `images/`, three commands make a
-reconstruction and show it:
+Three commands make a reconstruction and show it. Run them in a directory that
+has your photographs in `images/`:
 
 ```
 sfm ws init                     # make the directory a workspace

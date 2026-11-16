@@ -1,17 +1,17 @@
 # Converting Video to Image Sequences
 
 Turn a video of a scene into a directory of numbered images that `sfm` can
-solve. Every `sfm` command reads still images, not video, so the frames are
-written out first, with `sfm extract-frames`.
+solve. Every `sfm` command reads still images, not video, so `sfm extract-frames`
+writes the frames out first.
 
 `sfm extract-frames` runs [ffmpeg](https://ffmpeg.org/download.html) 5.1 or
-newer, and ffprobe, which must be on your `PATH`; `pip install sfmtool` does
-not install them.
+newer and ffprobe. Both must be on your `PATH`. `pip install sfmtool` does not
+install them.
 
 ## 1. Extract the frames
 
-Write the frames into the `images/` directory of a new workspace directory,
-here `dino_orbit/` for a 6-second video `dino_orbit.mp4`:
+Write the frames into the `images/` directory of a new workspace directory.
+Here the workspace is `dino_orbit/`, for a 6-second video, `dino_orbit.mp4`:
 
 ```
 $ sfm extract-frames dino_orbit.mp4 -o dino_orbit/images
@@ -22,12 +22,13 @@ dino_orbit.mp4: h264 2040x1536, 30.00 fps, 6.0 s
 ...
 ```
 
-By default it keeps 10 frames for each second of video (`--fps`) and scales a
-frame down until its long side is at most 1920 pixels (`--max-frame-size`).
+By default it keeps 10 frames for each second of video (`--fps`). It scales
+a frame down until its long side is at most 1920 pixels (`--max-frame-size`).
 `sfm extract-frames --help` lists these and the other options.
 
-The frames are in `dino_orbit/images/dino_orbit/`, named `frame_000001.jpg`,
-`frame_000002.jpg` and so on, in the order they appear in the video.
+The frames are in `dino_orbit/images/dino_orbit/`. They are named
+`frame_000001.jpg`, `frame_000002.jpg` and so on, in the order they appear in
+the video.
 
 ## 2. Solve the frames
 
