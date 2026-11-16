@@ -1,23 +1,38 @@
 # Converting Video to Image Sequences
 
-To try many different things with a particular 3D reconstruction, having the
-data as a video complicates individual frame access. Therefore the `sfm` command expects you
-to always convert to images first.
+Turn a video of a scene into a directory of numbered images that `sfm` can
+solve. Every `sfm` command reads still images, not video, so the frames are
+written out first, with `sfm extract-frames`.
 
-Here's an example of using [ffmpeg](https://www.ffmpeg.org/) to convert a
-single video in the current directory into a sequence of images in a `frames`
-subdirectory:
+`sfm extract-frames` runs [ffmpeg](https://ffmpeg.org/download.html) 5.1 or
+newer, and ffprobe, which must be on your `PATH`; `pip install sfmtool` does
+not install them.
 
-```bash
-# Assumes there's one video in the current directory
-VIDEO_FILE=$(echo *.mp4)
+## 1. Extract the frames
 
-IMAGE_BASE=$(basename "$VIDEO_FILE")
-IMAGE_BASE=${IMAGE_BASE%.*}
+Write the frames into the `images/` directory of a new workspace directory,
+here `dino_orbit/` for a 6-second video `dino_orbit.mp4`:
 
-mkdir -p frames
-ffmpeg -i "$VIDEO_FILE" \
-    -qscale:v 2 \
-    frames/"${IMAGE_BASE}_%04d.jpg"
+```
+$ sfm extract-frames dino_orbit.mp4 -o dino_orbit/images
+...
+dino_orbit.mp4: h264 2040x1536, 30.00 fps, 6.0 s
+  -> dino_orbit/images/dino_orbit/ at 10 fps
+  60 frames written, 1920x1446, in 0.6s
+...
 ```
 
+By default it keeps 10 frames for each second of video (`--fps`) and scales a
+frame down until its long side is at most 1920 pixels (`--max-frame-size`).
+`sfm extract-frames --help` lists these and the other options.
+
+The frames are in `dino_orbit/images/dino_orbit/`, named `frame_000001.jpg`,
+`frame_000002.jpg` and so on, in the order they appear in the video: here 60
+frames, 10 for each of the video's 6 seconds.
+
+## 2. Solve the frames
+
+`dino_orbit/` now holds its images the way the `dino/` workspace in Getting
+Started does. Change into it and continue from
+[Getting Started step 2](getting-started.md#2-initialize-the-workspace),
+`sfm ws init`.
