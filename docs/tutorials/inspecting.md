@@ -1,6 +1,6 @@
 # Inspecting a Reconstruction
 
-Look at the properties of a reconstruction from the command line: what it
+These commands help you understand a reconstruction's properties: what it
 holds, how its points and errors are distributed, how its images compare, how
 far the scene is from each camera, and how the camera moves from photograph to
 photograph.

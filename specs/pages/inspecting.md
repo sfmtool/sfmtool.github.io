@@ -2,7 +2,7 @@
 
 **Type:** how-to guide, listed in the site's **How-to guides** navigation section.
 
-**Reader's goal:** look at the properties of a reconstruction from the command
+**Reader's goal:** understand a reconstruction's properties from the command
 line: what it holds, how its points and errors are distributed, how its images
 compare, how far the scene is from each camera, and how the camera moves
 between photographs.
