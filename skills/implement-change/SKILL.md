@@ -278,28 +278,39 @@ runs used. Leave nothing running: no `docs-serve`, viewer or `sfm` command.
 A headless Chromium-based browser renders a built page for a check or a
 screenshot: `msedge` on Windows (`/c/Program Files
 (x86)/Microsoft/Edge/Application/msedge.exe` in Git Bash), `google-chrome`
-or `chromium` elsewhere. Serve the site with `pixi run docs-serve` (it
-prints its address), or open the built `site/` directly with a `file://`
-URL.
+or `chromium` elsewhere. Copy the built `site/` to the scratchpad and open
+the copy with a `file://` URL; `pixi run docs-serve` cannot serve a page
+with a script appended. Pass `--headless --hide-scrollbars
+--user-data-dir=<scratchpad>/browser` every time, so the browser does not
+use the person's own profile.
 
-- **A picture:** `--headless --hide-scrollbars --virtual-time-budget=3000
+- **A page in a given state** (a tab selected, an attribute set): append
+  `<style>*,*::before,*::after{transition:none!important}</style>` and a
+  `<script>` that acts in a `setTimeout(…,300)` and then calls
+  `document.activeElement.blur()`. Without them a picture catches a tab half
+  switched, in its focus colour or without its underline.
+- **What a page does:** `--virtual-time-budget=5000 --dump-dom <url>`, with
+  the script writing the result into an element, then read that element from
+  the dumped DOM. An element that is hidden, such as the content of a tab
+  not selected, has no rendered text, so CSS does not apply to its
+  `innerText`: select the tab first. `--dump-dom` lays the page out smaller
+  than `--window-size` (976×708 for `1000,800` with Edge on Windows), so
+  also write `innerWidth` and `innerHeight`, and enlarge the window until
+  they match the picture's before measuring.
+- **A picture:** `--force-device-scale-factor=2 --virtual-time-budget=3000
   --blink-settings=preferredColorScheme=1 --window-size=1000,H
   --screenshot=<file>.png <url>`, with `preferredColorScheme=0` for the dark
   scheme. Without the setting the browser takes the operating system's
   scheme, as the site does. Do not put a `#anchor` in the URL: the picture
   comes out blank. Make the window tall enough to hold the part to show and
-  crop it afterwards: on Windows with PowerShell's `System.Drawing`
-  (`$i=[System.Drawing.Bitmap]::FromFile(<in>)`,
+  crop it afterwards, at twice the CSS pixels that `getBoundingClientRect()`
+  gives from a `--dump-dom` of the same copy: on Windows with PowerShell's
+  `System.Drawing` (`$i=[System.Drawing.Bitmap]::FromFile(<in>)`,
   `$i.Clone((New-Object System.Drawing.Rectangle X,Y,W,H),$i.PixelFormat).Save(<out>)`
   after `Add-Type -AssemblyName System.Drawing`), elsewhere with ImageMagick
-  (`magick <in> -crop WxH+X+Y <out>`). Look at the picture before using it.
-- **What a page does:** `--headless --virtual-time-budget=5000 --dump-dom
-  <url>` on a copy of the page in the scratchpad with a `<script>` appended
-  that acts on the page (clicks a tab, sets an attribute) and writes the
-  result into an element, then read that element from the dumped DOM. An
-  element that is hidden, such as the content of a tab not selected, has no
-  rendered text, so CSS does not apply to its `innerText`: select the tab
-  first.
+  (`magick <in> -crop WxH+X+Y <out>`). `--hide-scrollbars` also hides a code
+  block's own scrollbar: when a line runs past the block's edge, the caption
+  says that the block scrolls sideways. Look at the picture before using it.
 
 ## Screenshots
 
@@ -311,8 +322,7 @@ What the PR shows, as the screenshot agent takes it:
    and the screenshot it replaced at `<base>/main`'s commit on upstream. A
    change to how a page reads or behaves (text, layout, the theme, a code
    block) is shown by a picture of the rendered page, cropped to the part
-   that changed, taken with the [Browser](#browser) from `pixi run
-   docs-serve`.
+   that changed, taken with the [Browser](#browser) from the built `site/`.
 2. **Before**, when something that already existed changed: build
    `<base>/main` in a worktree in the scratchpad (`git worktree add
    <scratchpad>/before <base>/main`, then `pixi run docs-build` there) and
@@ -335,7 +345,7 @@ What the PR shows, as the screenshot agent takes it:
    Link each one as
    `https://raw.githubusercontent.com/<fork owner>/sfmtool.github.io/<sha>/<file>.png`.
    PR #14's Screenshots section is an example.
-5. Stop the `docs-serve` and any browser or viewer started.
+5. Stop any `docs-serve`, browser or viewer started.
 
 ## Implementer brief
 
