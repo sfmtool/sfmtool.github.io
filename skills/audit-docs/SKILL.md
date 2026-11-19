@@ -8,8 +8,8 @@ description: Audit the documentation pages under docs/ against their specs in sp
 Compare each page under `docs/` with its spec in `specs/pages/`, with the
 shared rules in `specs/README.md` (the site spec) and with sfmtool `main`, and
 write one report. The code, its specs and its `--help` are in the `sfmtool`
-repository, usually checked out beside this one as `../sfmtool`. This skill
-is read-only: it changes no page, spec or code.
+repository, checked out beside this one as `../sfmtool`. This skill is
+read-only: it changes no page, spec or code.
 
 ## Scope
 
@@ -83,6 +83,13 @@ that fails outranks a paragraph that is too long.
 
 ## How to work
 
+### The sfmtool checkout
+
+Before any check, run or agent, prepare `../sfmtool` once, as
+`skills/implement-change/SKILL.md` § "The sfmtool checkout" says: require it,
+bring it to upstream `main` and build it. The agents below run in parallel on
+that checkout as it is; they do not update or rebuild it.
+
 ### Mechanical checks
 
 Run these over every page and cite the numbers, including zeros.
@@ -100,15 +107,16 @@ Run these over every page and cite the numbers, including zeros.
 5. **Repeated text.** Normalized sentences that appear on more than one page,
    and the run-to-run caveat (`grep -n "differ"`) outside its home page.
 6. **Commands.** Every `$ sfm …` line and every `sfm …` in a code span: the
-   subcommand exists in sfmtool's `src/sfmtool/cli.py` `COMMANDS`, and each
-   flag appears in `pixi run sfm <command> --help` (run in `../sfmtool`).
+   subcommand is listed by `pixi run sfm --help`, or for one in a group
+   (`ws init`, `camrig create`) by `pixi run sfm <group> --help`, and each
+   flag appears in `pixi run sfm <command> --help`, all run in `../sfmtool`.
 7. **Viewer words.** Every bold term on a GUI page, searched for in
    `../sfmtool/crates/sfm-explorer/src`. A term not found there is a lead,
    not yet a finding: read the viewer or walk the step to settle it.
-8. **Status of sfmtool.** Note the sfmtool commit audited
-   (`git -C ../sfmtool rev-parse --short=8 origin/main`) and whether the
-   checkout's `HEAD` matches it. If it does not, say which commit the runs
-   used.
+8. **Status of sfmtool.** Note the commit the prepared checkout is at
+   (`git -C ../sfmtool rev-parse --short=8 HEAD`) and whether it is upstream
+   `main` (`<upstream>/main`, where `<upstream>` is the remote whose URL
+   points at `sfmtool/sfmtool`).
 
 ### The shared run
 
@@ -118,10 +126,10 @@ pages are made: the Getting Started steps on a copy of sfmtool's
 `test-data`. Run the commands of every sampled page from that workspace with
 `pixi run --manifest-path ../sfmtool/pixi.toml sfm …`, and compare each page's
 output blocks line by line for format, headings and columns. For a sampled
-GUI page, open the run's `.sfmr` in a viewer with its MCP endpoint
-(`pixi run gui-mcp` in `../sfmtool`, or `sfm explorer --mcp PORT`) and follow
-the page's steps literally with `sfm explorer-call`, as `AGENTS.md` describes;
-an operation the text does not let you find is a finding under check 6.
+GUI page, open a copy of the run's `.sfmr` in a viewer launched and driven
+as sfmtool's `skills/gui-bug-bash/SKILL.md` § "Tools" describes, and follow
+the page's steps literally, as `AGENTS.md` describes; an operation the text
+does not let you find is a finding under check 6.
 Compare what the viewer shows with each screenshot. Do not replace any
 screenshot.
 
@@ -150,8 +158,8 @@ Open with a **Sample** block:
 
 ```
 **Sample:** N of M pages read in full. Seed `<seed>` (or "every page"). Pulled
-in: <pages and why>. sfmtool audited at `<commit>`; the shared run used
-`<commit>`. The mechanical checks below cover all M pages.
+in: <pages and why>. sfmtool at `<commit>` (upstream `main`, or what it is
+instead). The mechanical checks below cover all M pages.
 ```
 
 Then **Mechanical findings**: the numbers of each check, with a table of one
