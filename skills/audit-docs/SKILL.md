@@ -107,9 +107,9 @@ Run these over every page and cite the numbers, including zeros.
 5. **Repeated text.** Normalized sentences that appear on more than one page,
    and the run-to-run caveat (`grep -n "differ"`) outside its home page.
 6. **Commands.** Every `$ sfm …` line and every `sfm …` in a code span: the
-   subcommand is listed by `pixi run sfm --help` (run in `../sfmtool`), or for
-   a grouped one such as `ws init` by `pixi run sfm ws --help`, and each flag
-   appears in `pixi run sfm <command> --help`.
+   subcommand is listed by `pixi run sfm --help`, or for one in a group
+   (`ws init`, `camrig create`) by `pixi run sfm <group> --help`, and each
+   flag appears in `pixi run sfm <command> --help`, all run in `../sfmtool`.
 7. **Viewer words.** Every bold term on a GUI page, searched for in
    `../sfmtool/crates/sfm-explorer/src`. A term not found there is a lead,
    not yet a finding: read the viewer or walk the step to settle it.
