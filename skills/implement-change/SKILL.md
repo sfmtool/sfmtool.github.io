@@ -96,10 +96,38 @@ For the current branch, check that the working tree is clean
 (`git status --porcelain` prints nothing). If it is not, ask the user what to
 do with the uncommitted changes rather than letting an agent commit them.
 
-Check that `../sfmtool` exists. The agents check commands, viewer words and
-output against it. Note its upstream `main` commit
-(`git -C ../sfmtool fetch <its upstream> main` and `rev-parse`) and whether
-its `HEAD` matches, and pass both to the agents.
+### The sfmtool checkout
+
+The agents check every command, viewer word and output block against
+sfmtool, checked out beside this repository as `../sfmtool`. Prepare it once,
+before the first agent starts. The agents use it as it is: they do not update
+or rebuild it.
+
+- **Require it.** When `../sfmtool` is missing, ask the user where their
+  sfmtool checkout is, or whether to clone
+  `https://github.com/sfmtool/sfmtool` there. Start no agent without one.
+- **Bring it to upstream `main`.** Its upstream is the remote whose URL points
+  at `sfmtool/sfmtool`, found as in step 1. Fetch its `main` and compare
+  `HEAD` with it. When the checkout is on its `main` branch, its working tree
+  is clean and `HEAD` is behind, fast-forward it
+  (`git -C ../sfmtool merge --ff-only <its upstream>/main`). Otherwise it
+  holds the user's own work: do not switch its branch, reset it or stash it.
+  Ask the user whether to run against it as it is, or against a worktree of
+  upstream `main` in the scratchpad
+  (`git -C ../sfmtool worktree add <scratchpad>/sfmtool <its upstream>/main`).
+  A worktree builds its own Pixi environment and Rust targets, which takes a
+  while, and its path takes the place of `../sfmtool` in the briefs and the
+  [Checks](#checks). Remove it when the change is finished.
+- **Build it**, every time, even when nothing was fetched. The CLI's Rust
+  code and the viewer that `sfm explorer` runs are compiled into sfmtool's
+  Python extension, which does not rebuild when the source changes. The
+  `viewer.py` launcher the agents use runs the separately built
+  `sfm-explorer` binary. Build both as sfmtool's
+  `skills/gui-bug-bash/SKILL.md` § "1. Setup" step 2 says. sfmtool's
+  `AGENTS.md` § "Things that can surprise you" says why (the entries on the
+  native extension and on `sfm explorer`).
+- **Pass it on.** Give the agents the checkout's path, its commit, and
+  whether that commit is upstream `main`.
 
 ## 3. Implementer
 
@@ -208,23 +236,28 @@ the branch's last commit.
 - **A command or output block the change adds or alters:** run it for real
   and compare. An `sfm` command runs in the shared run (the Getting Started
   steps on a copy of `../sfmtool/test-data/images/dino_dog_toy` in the
-  scratchpad, never in `test-data`) with
-  `pixi run --manifest-path ../sfmtool/pixi.toml sfm …`; each flag appears in
-  its `--help`. A command for another shell (PowerShell, a download) runs in
-  that shell, in the scratchpad. An output block's lines, headings and
+  scratchpad, never in `test-data`), through sfmtool's Pixi environment
+  (`pixi run --manifest-path ../sfmtool/pixi.toml sfm …` when run from the
+  scratchpad); each flag appears in its `--help`. A command for another
+  shell (PowerShell, a download) runs in that shell, in the scratchpad. An output block's lines, headings and
   columns match the run; counts and times that vary from run to run are not
   differences.
 - **A step in SfM Explorer:** follow the text literally over the viewer's MCP
-  endpoint (`sfm explorer --mcp PORT` on a copy of the run's `.sfmr`, driven
-  with `sfm explorer-call`), as `AGENTS.md` § "Steps that a person or an
-  agent can follow" describes. Each bold viewer word appears in
-  `../sfmtool/crates/sfm-explorer/src` as the viewer shows it. An operation
-  or argument you have to guess is a finding against the text.
-- **A screenshot on a page:** taken from that run on copies of `test-data`,
-  placed in the page's `images/` directory, referenced with alt text that
-  says what it shows, and cropped as `AGENTS.md` says: no local path,
-  username, MCP status text or stale hover label. Look at every image. Every
-  file under an `images/` directory is referenced by some page.
+  endpoint, on a copy of the run's `.sfmr`, as `AGENTS.md` § "Steps that a
+  person or an agent can follow" describes. Launch, drive and stop the viewer
+  as sfmtool's `skills/gui-bug-bash/SKILL.md` § "Tools" describes, with its
+  `viewer.py` and `sfm explorer-call`
+  (`specs/cli/automation/explorer-call-command.md`); skip its build, which the
+  coordinator did. Each bold viewer word is text the viewer shows, on screen
+  or as a widget's name in `get_widgets` (`specs/gui/mcp-server.md`
+  § "`get_widgets`"). An operation or argument you have to guess is a finding
+  against the text.
+- **A screenshot on a page:** taken from that run on copies of `test-data`
+  in the scratchpad, with the viewer driven as sfmtool's
+  `skills/implement-change/SKILL.md` § "Screenshots" steps 1, 2 and 4
+  describe (without step 2's build), and placed, referenced and cropped as
+  `AGENTS.md` says. Look at every image. Every file under an `images/`
+  directory is referenced by some page.
 - **The theme, `zensical.toml`, CSS or JavaScript:** the build does not check
   what these do, so open the built page in a headless browser
   ([Browser](#browser)) and check the behaviour the change is for, in the
@@ -312,7 +345,8 @@ What the PR shows, as the screenshot agent takes it:
 > `specs/README.md` (who the site is for, each page's type, the shared rules)
 > and the spec in `specs/pages/` of every page you change. Use the terms in
 > `../sfmtool/specs/GLOSSARY.md`. The code, its specs and its `--help` are in
-> `../sfmtool`, at commit `<sfmtool commit>`.
+> `../sfmtool`, at commit `<sfmtool commit>`, built by the coordinator; do
+> not update or rebuild it.
 >
 > **The change:** <the change>
 >
@@ -363,7 +397,8 @@ What the PR shows, as the screenshot agent takes it:
 > allowed. Do not invoke the `implement-change` skill; you are the auditor it
 > launched. Read `AGENTS.md` first, then `specs/README.md` and the spec in
 > `specs/pages/` of every page the change touches. The code, its specs and
-> its `--help` are in `../sfmtool`, at commit `<sfmtool commit>`.
+> its `--help` are in `../sfmtool`, at commit `<sfmtool commit>`, built by
+> the coordinator; do not update or rebuild it.
 >
 > **The change that was asked for:** <the change>
 >
