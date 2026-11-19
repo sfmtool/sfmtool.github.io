@@ -306,12 +306,14 @@ use the person's own profile.
   Do not put a `#anchor` in the URL or scroll from the script: the picture
   comes out blank. For a part far down a page, have the script set
   `display:none` on every element before the part's heading (its
-  `previousElementSibling`s), so the heading is at the top. The header and
-  the left-hand nav stay as they were, but **On this page** still shows the
+  `previousElementSibling`s, and those of each element that holds it, up to
+  the page's `article`), so the heading is at the top. The header and the
+  left-hand nav stay as they were, but **On this page** still shows the
   start of its list, with no entry marked: crop it out. Make the window tall
-  enough to hold the part to show and crop it afterwards, at twice the CSS pixels that `getBoundingClientRect()`
-  gives from a `--dump-dom` of the same copy: on Windows with PowerShell's
-  `System.Drawing` (`$i=[System.Drawing.Bitmap]::FromFile(<in>)`,
+  enough to hold the part to show and crop it afterwards, at twice the CSS
+  pixels that `getBoundingClientRect()` gives from a `--dump-dom` of the
+  same copy: on Windows with PowerShell's `System.Drawing`
+  (`$i=[System.Drawing.Bitmap]::FromFile(<in>)`,
   `$i.Clone((New-Object System.Drawing.Rectangle X,Y,W,H),$i.PixelFormat).Save(<out>)`
   after `Add-Type -AssemblyName System.Drawing`), elsewhere with ImageMagick
   (`magick <in> -crop WxH+X+Y <out>`). `--hide-scrollbars` also hides a code
