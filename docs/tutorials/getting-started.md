@@ -12,7 +12,7 @@ and the table have enough texture to give many SIFT features.
 
 ## 1. Install and get the photographs
 
-```
+```console
 $ pip install sfmtool
 ```
 
@@ -24,22 +24,28 @@ Download the photographs,
 [`dino_dog_toy.zip`](https://github.com/sfmtool/sfmtool/releases/download/v0.3/dino_dog_toy.zip)
 (42 MB), and unzip it. It holds the 85 photographs in `dino/images/`.
 
-```
-$ curl -LO https://github.com/sfmtool/sfmtool/releases/download/v0.3/dino_dog_toy.zip
-$ unzip dino_dog_toy.zip
-$ cd dino
-```
+=== "Linux and macOS"
 
-In Windows PowerShell, use
-`Invoke-WebRequest <link> -OutFile dino_dog_toy.zip` and
-`Expand-Archive dino_dog_toy.zip .` for the first two commands.
+    ```console
+    $ curl -LO https://github.com/sfmtool/sfmtool/releases/download/v0.3/dino_dog_toy.zip
+    $ unzip dino_dog_toy.zip
+    $ cd dino
+    ```
+
+=== "Windows PowerShell"
+
+    ```pwsh-session
+    PS> Invoke-WebRequest https://github.com/sfmtool/sfmtool/releases/download/v0.3/dino_dog_toy.zip -OutFile dino_dog_toy.zip
+    PS> Expand-Archive dino_dog_toy.zip .
+    PS> cd dino
+    ```
 
 ## 2. Initialize the workspace
 
 A workspace is a directory with its own settings, such as how features are
 extracted. Every `sfm` command you run inside it uses those settings.
 
-```
+```console
 $ sfm ws init --max-features 4000
 Initialized workspace: .../dino
 ...
@@ -58,7 +64,7 @@ works out where each camera stood and where the 3D points are.
 4000 features. Fewer features match faster. The workspace still stores all
 4000, so a later solve can use more without extracting them again.
 
-```
+```console
 $ sfm solve -g images/ --max-features 2000
 Running global SfM with COLMAP's global mapper...
 ...
@@ -79,7 +85,7 @@ and time will differ. The date that starts the file name will differ too.
 
 Open the saved reconstruction in SfM Explorer:
 
-```
+```console
 $ sfm explorer sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
 ```
 

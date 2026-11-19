@@ -13,7 +13,7 @@ install them.
 Write the frames into the `images/` directory of a new workspace directory.
 Here the workspace is `dino_orbit/`, for a 6-second video, `dino_orbit.mp4`:
 
-```
+```console
 $ sfm extract-frames dino_orbit.mp4 -o dino_orbit/images
 ...
 dino_orbit.mp4: h264 2040x1536, 30.00 fps, 6.0 s

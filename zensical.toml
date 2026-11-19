@@ -14,6 +14,8 @@ site_description = "Fun with Structure from Motion"
 site_url = "https://sfmtool.github.io/"
 repo_url = "https://github.com/sfmtool/sfmtool"
 repo_name = "sfmtool/sfmtool"
+# Hides the prompts and output lines in a command block from the copy button.
+extra_css = ["assets/stylesheets/extra.css"]
 
 nav = [
   { "Home" = "index.md" },
@@ -33,7 +35,8 @@ nav = [
 # navigation.indexes makes a section's title a link to the section's own page,
 # its index.md listed first, while the arrow beside it expands and collapses
 # the section.
-features = ["navigation.expand", "navigation.indexes"]
+# content.code.copy puts a copy button on every code block.
+features = ["content.code.copy", "navigation.expand", "navigation.indexes"]
 # The SfM Explorer application icon: a copy of
 # `crates/sfm-explorer/assets/icon/sfm-explorer-icon-64.png` in the `sfmtool`
 # repository, where the script that renders it from its SVG lives.

@@ -18,7 +18,7 @@ the cuts.
 
 ## What does it hold, and how are its points distributed?
 
-```
+```console
 $ sfm inspect -v sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
 ...
 Reconstruction summary:
@@ -70,7 +70,7 @@ describes every section.
 
 ## How do the images compare?
 
-```
+```console
 $ sfm analyze --metrics sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
 ...
 Image (by mean error desc)                           Obs   MeanErr    MedErr    MaxErr  MeanTL  Flag
@@ -93,7 +93,7 @@ image that sees no points gets `--`. No image is flagged here.
 
 ## How far away is the scene from each camera?
 
-```
+```console
 $ sfm analyze --z-range sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
 ...
 Summary statistics:
@@ -125,7 +125,7 @@ step of the camera's motion. It lists the discontinuities, the places where
 that motion is irregular. A **break** is a discontinuity where the solve
 placed the camera path on its two sides inconsistently.
 
-```
+```console
 $ sfm motion sfmr/20261115-00-solve-dino_dog_toy_1-85.sfmr
 ...
   images/dino_dog_toy: 10 discontinuities, 0 breaks

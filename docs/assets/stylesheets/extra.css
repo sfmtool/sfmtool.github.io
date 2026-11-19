@@ -1,0 +1,12 @@
+/* Copyright The SfM Tool Authors
+ * SPDX-License-Identifier: Apache-2.0 */
+
+/* In a `console` or `pwsh-session` block, Pygments marks each prompt (`$ `,
+ * `PS> `) as `.gp` and each output line as `.go`. The copy button copies the
+ * block's rendered text while the theme sets `data-md-copying` on it, so
+ * hiding both here makes the button copy only the commands, ready to paste
+ * into a shell. */
+.highlight code[data-md-copying] .gp,
+.highlight code[data-md-copying] .go {
+  display: none;
+}
