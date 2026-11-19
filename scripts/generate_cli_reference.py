@@ -82,8 +82,11 @@ def main() -> None:
         f"## sfm\n\n{code_block(text)}\n"
     )
     categories = {h: n for h, n in sections(text).items() if h != "Options"}
-    if not categories or not all(categories.values()):
-        raise SystemExit("No categories, or an empty one, in `sfm --help`")
+    if not categories:
+        raise SystemExit("No command categories in `sfm --help`")
+    for heading, names in categories.items():
+        if not names:
+            raise SystemExit(f"No commands under `{heading}:` in `sfm --help`")
     for heading, names in categories.items():
         page += f"## {heading}\n\n"
         for name in names:
