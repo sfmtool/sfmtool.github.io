@@ -108,8 +108,9 @@ or rebuild it.
   `https://github.com/sfmtool/sfmtool` there. Start no agent without one.
 - **Bring it to upstream `main`.** Its upstream is the remote whose URL points
   at `sfmtool/sfmtool`, found as in step 1. Fetch its `main` and compare
-  `HEAD` with it. When the checkout is on its `main` branch, its working tree
-  is clean and `HEAD` is behind, fast-forward it
+  `HEAD` with it. When `HEAD` is upstream `main`, use it. When the checkout
+  is on its `main` branch, its working tree is clean and `HEAD` is behind
+  upstream `main`, fast-forward it
   (`git -C ../sfmtool merge --ff-only <its upstream>/main`). Otherwise it
   holds the user's own work: do not switch its branch, reset it or stash it.
   Ask the user whether to run against it as it is, or against a worktree of
@@ -118,14 +119,13 @@ or rebuild it.
   A worktree builds its own Pixi environment and Rust targets, which takes a
   while, and its path takes the place of `../sfmtool` in the briefs and the
   [Checks](#checks). Remove it when the change is finished.
-- **Build it**, every time, even when nothing was fetched. The CLI's Rust
-  code and the viewer that `sfm explorer` runs are compiled into sfmtool's
-  Python extension, which does not rebuild when the source changes. The
-  `viewer.py` launcher the agents use runs the separately built
-  `sfm-explorer` binary. Build both as sfmtool's
-  `skills/gui-bug-bash/SKILL.md` § "1. Setup" step 2 says. sfmtool's
-  `AGENTS.md` § "Things that can surprise you" says why (the entries on the
-  native extension and on `sfm explorer`).
+- **Build it**, every time, even when nothing was fetched: both sfmtool's
+  Python extension, which `sfm` and `sfm explorer` run, and the
+  `sfm-explorer` binary, which the agents' `viewer.py` launcher runs. Build
+  them as sfmtool's `skills/gui-bug-bash/SKILL.md` § "1. Setup" step 2 says.
+  sfmtool's `AGENTS.md` § "Things that can surprise you" says why the
+  extension needs its own build (the entries on the native extension and on
+  `sfm explorer`).
 - **Pass it on.** Give the agents the checkout's path, its commit, and
   whether that commit is upstream `main`.
 
@@ -133,8 +133,9 @@ or rebuild it.
 
 Launch one agent with the [implementer brief](#implementer-brief) below, the
 branch name, the base, the change, the draft if there is one, the sfmtool
-commit, the [Checks](#checks) section pasted in place of `<checks>`, and any
-task-specific instructions. Wait for it to finish before doing anything else.
+checkout's path and commit, the [Checks](#checks) section pasted in place of
+`<checks>`, and any task-specific instructions. Wait for it to finish before
+doing anything else.
 
 The implementer returns DONE or DECLINE. A decline is a valid outcome: the
 change is wrong, already made, needs the maintainer's decision, or would cost
@@ -147,14 +148,15 @@ reason to the user.
 ## 4. Auditor
 
 Launch a fresh agent with the [auditor brief](#auditor-brief) below, the
-branch name, the base, the change, the sfmtool commit, the same Checks
-section and the same task-specific instructions. Tell it what the
-implementer said it changed and what it deliberately left out, what it said
-to screenshot, and name the claims most worth checking (a command or its
-output, a viewer word, a step followed over MCP, a theme behaviour checked in
-a browser, anything the implementer says it inferred). For a decline, tell it
-the implementer's decision and stated reason. Do not give it the draft or any
-other part of the implementer's reasoning; it should verify, not agree.
+branch name, the base, the change, the sfmtool checkout's path and commit,
+the same Checks section and the same task-specific instructions. Tell it
+what the implementer said it changed and what it deliberately left out, what
+it said to screenshot, and name the claims most worth checking (a command or
+its output, a viewer word, a step followed over MCP, a theme behaviour
+checked in a browser, anything the implementer says it inferred). For a
+decline, tell it the implementer's decision and stated reason. Do not give
+it the draft or any other part of the implementer's reasoning; it should
+verify, not agree.
 
 The auditor returns CLEAN or NEEDS-FIX.
 
@@ -239,9 +241,9 @@ the branch's last commit.
   scratchpad, never in `test-data`), through sfmtool's Pixi environment
   (`pixi run --manifest-path ../sfmtool/pixi.toml sfm …` when run from the
   scratchpad); each flag appears in its `--help`. A command for another
-  shell (PowerShell, a download) runs in that shell, in the scratchpad. An output block's lines, headings and
-  columns match the run; counts and times that vary from run to run are not
-  differences.
+  shell (PowerShell, a download) runs in that shell, in the scratchpad. An
+  output block's lines, headings and columns match the run; counts and times
+  that vary from run to run are not differences.
 - **A step in SfM Explorer:** follow the text literally over the viewer's MCP
   endpoint, on a copy of the run's `.sfmr`, as `AGENTS.md` § "Steps that a
   person or an agent can follow" describes. Launch, drive and stop the viewer
