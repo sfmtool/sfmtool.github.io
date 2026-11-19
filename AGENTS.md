@@ -27,6 +27,11 @@ navigation is in `zensical.toml`, and the build runs through Pixi:
   in `reports/`.
 - Write in plain language: no metaphors or idioms where a literal phrase says
   the same thing. Name the thing and say what it does.
+- Make every change through the `implement-change` skill
+  (`skills/implement-change/`, linked into `.claude/skills/`): an implementer
+  agent makes the change, an independent auditor checks it against the
+  specs, sfmtool and a real run, and the skill lists the checks each kind of
+  change needs.
 - Pull requests are squash-merged, and every commit needs a DCO sign-off
   (`git commit -s`).
 - `reports/` holds dated findings about the docs, such as those carried over
