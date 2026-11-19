@@ -20,8 +20,9 @@ steps.
 The dataset is `test-data/images/dino_dog_toy` (85 photos, about a minute to
 solve). This page's run is the shared run (see the [site spec](../README.md)).
 
-1. Install: `pip install sfmtool`; get the images into `dino/images/` with a
-   command the reader can copy.
+1. Install: `pip install sfmtool`; get the images into `dino/images/` with
+   commands the reader can copy, in a Linux and macOS tab and a Windows
+   PowerShell tab.
 2. `sfm ws init --max-features 4000`, with one sentence on what a workspace is
    for.
 3. `sfm solve -g images/ --max-features 2000`, with one sentence each on what

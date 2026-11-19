@@ -87,6 +87,15 @@ next action).
 - Do not describe in words what a screenshot next to the text already shows.
   The words name what to look for in it.
 
+**Command blocks.** Every code block has a copy button. A block whose
+commands start with a `$ ` prompt is a `console` block. Its copy button then
+copies only the commands, without the prompts and output lines
+(`docs/assets/stylesheets/extra.css`). A block with no output may leave the
+prompts out, as the home page does. Where Windows PowerShell needs different
+commands, give them in full in a `pwsh-session` block, each after `PS> `. Put
+that block in a **Windows PowerShell** content tab beside a **Linux and
+macOS** tab.
+
 **Captured output and screenshots.** The tutorials and how-to guides take
 them from one shared run: the Getting Started steps on a copy of
 `test-data/images/dino_dog_toy` from sfmtool `main`, with the later pages
