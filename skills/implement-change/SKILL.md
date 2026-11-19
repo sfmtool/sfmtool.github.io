@@ -296,7 +296,7 @@ use the person's own profile.
   `innerText`: select the tab first. `--dump-dom` lays the page out smaller
   than `--window-size` (976×708 for `1000,800` with Edge on Windows), so
   also write `innerWidth` and `innerHeight`, and enlarge the window until
-  they match the picture's before measuring.
+  they equal the picture's `--window-size` before measuring.
 - **A picture:** `--force-device-scale-factor=2 --virtual-time-budget=3000
   --blink-settings=preferredColorScheme=1 --window-size=1000,H
   --screenshot=<file>.png <url>`, with `preferredColorScheme=0` for the dark
