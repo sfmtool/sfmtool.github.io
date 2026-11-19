@@ -20,12 +20,13 @@ publish them.
 ## What the site does and what lives elsewhere
 
 The site gives a reader the few paths that matter, in order, with the key
-points explained in a short narrative. It does not document every option,
-every output line or how each behaviour works. Those live in sfmtool:
+points explained in a short narrative. Its tutorials and guides do not
+document every option, every output line or how each behaviour works. Those
+live in sfmtool:
 
 | Need | Where it lives |
 |---|---|
-| Every option of a command | `sfm <command> --help` |
+| Every option of a command | `sfm <command> --help`, which the site's Command Reference page copies at the release `pixi.toml` pins |
 | What a command, output line, panel or format does, in full | sfmtool's [`specs/`](https://github.com/sfmtool/sfmtool/tree/main/specs) |
 | The words for a concept | sfmtool's [`specs/GLOSSARY.md`](https://github.com/sfmtool/sfmtool/blob/main/specs/GLOSSARY.md) |
 
@@ -41,15 +42,17 @@ doing or knowing, and is the reader learning or working?
   step. It keeps explanation to what the next step needs and links out for the
   rest.
 - **How-to guide**: steps to one goal for a reader who already knows the basics.
-- **Reference**: facts to look up. On this site, that is sfmtool's `--help` and
-  specs.
+- **Reference**: facts to look up. On this site, that is the Command
+  Reference page, generated from sfmtool's `--help`. The rest of the
+  reference is sfmtool's specs.
 - **Explanation**: background on why things are as they are.
 
 The navigation in `zensical.toml` has a section per type: **Tutorials**
 holds Getting Started and Viewing 3D Point Tracks, and **How-to guides** holds
 Inspecting a Reconstruction and Converting Video to Image Sequences. Each
 section's title links to a short section page that lists its pages; the arrow
-beside the title expands and collapses the section.
+beside the title expands and collapses the section. **Command Reference**
+comes last, as a single page rather than a section.
 
 | Page | Type | Spec |
 |---|---|---|
@@ -60,10 +63,11 @@ beside the title expands and collapses the section.
 | `docs/tutorials/point-tracks.md` | Tutorial | [point-tracks.md](pages/point-tracks.md) |
 | `docs/tutorials/inspecting.md` | How-to guide | [inspecting.md](pages/inspecting.md) |
 | `docs/tutorials/video-to-images.md` | How-to guide | [video-to-images.md](pages/video-to-images.md) |
+| `docs/reference/commands.md` | Reference, written at build time by `scripts/generate_cli_reference.py` | [commands.md](pages/commands.md) |
 
 The site has no explanation page (what a track, a patch or a solve is) and no
-how-to guide for driving SfM Explorer with an agent. Reference stays in
-sfmtool.
+how-to guide for driving SfM Explorer with an agent. Reference beyond
+`--help` stays in sfmtool's specs.
 
 ## Shared rules
 
