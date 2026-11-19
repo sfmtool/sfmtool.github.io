@@ -30,11 +30,11 @@ sfmtool release that `pixi.toml` pins, so the page matches what
   `text` block. A command group, such as `sfm ws`, has its own `--help`,
   followed by one heading per command in the group (**sfm ws init**).
 
-The help is copied verbatim at 80 columns. The site spec's rule on trimming
-output blocks does not apply: this page is the full listing. The script
-finds the categories, commands and groups in the help output itself, so a
-new command or category in sfmtool appears when the pin moves, without a
-change here.
+The help is copied verbatim, as Click wraps it for an 80-column terminal.
+The site spec's rule on trimming output blocks does not apply: this page is
+the full listing. The script finds the categories, commands and groups in
+the help output itself, so a new command or category in sfmtool appears when
+the pin moves, without a change here.
 
 ## Leaves out
 

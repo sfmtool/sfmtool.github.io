@@ -64,7 +64,10 @@ def command(words: list[str], level: int) -> str:
     text = help_text(words)
     out = f"{'#' * level} sfm {' '.join(words)}\n\n{code_block(text)}\n"
     if text.startswith(f"Usage: sfm {' '.join(words)} [OPTIONS] COMMAND"):
-        for name in sections(text).get("Commands", []):
+        names = sections(text).get("Commands")
+        if not names:
+            raise SystemExit(f"No commands in `sfm {' '.join(words)} --help`")
+        for name in names:
             out += command([*words, name], level + 1)
     return out
 
@@ -78,9 +81,10 @@ def main() -> None:
         f" see its spec in sfmtool's [`specs/cli/`]({SPECS_URL}).\n\n"
         f"## sfm\n\n{code_block(text)}\n"
     )
-    for heading, names in sections(text).items():
-        if heading == "Options":
-            continue
+    categories = {h: n for h, n in sections(text).items() if h != "Options"}
+    if not categories or not all(categories.values()):
+        raise SystemExit("No categories, or an empty one, in `sfm --help`")
+    for heading, names in categories.items():
         page += f"## {heading}\n\n"
         for name in names:
             page += command([name], 3)
