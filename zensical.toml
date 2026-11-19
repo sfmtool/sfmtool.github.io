@@ -29,6 +29,8 @@ nav = [
     { "Inspecting a Reconstruction" = "tutorials/inspecting.md" },
     { "Converting Video to Image Sequences" = "tutorials/video-to-images.md" },
   ]},
+  # Written at build time by `scripts/generate_cli_reference.py`.
+  { "Command Reference" = "reference/commands.md" },
 ]
 
 [project.theme]

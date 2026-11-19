@@ -5,7 +5,15 @@
 authors = ["Mark <399551+mwiebe@users.noreply.github.com>"]
 channels = ["conda-forge"]
 name = "sfmtool-docs"
-platforms = ["win-64", "linux-64", "osx-arm64"]
+# macOS 14 is the oldest macOS that pycolmap's PyPI wheels support. The
+# Command Reference page needs sfmtool, which depends on pycolmap. A bare
+# `osx-arm64` entry declares macOS 13.0, where the solver finds no pycolmap
+# wheel.
+platforms = [
+  "win-64",
+  "linux-64",
+  { name = "osx-arm64-macos14", platform = "osx-arm64", macos = "14.0" },
+]
 version = "0.1"
 
 [dependencies]
@@ -19,7 +27,12 @@ python = ">=3.14.7,<3.15"
 # window (`>=0.0.N, <0.0.N+1`) rather than widening it.
 [pypi-dependencies]
 zensical = ">=0.0.72, <0.0.73"
+# The Command Reference page is generated from this sfmtool's `--help` output,
+# so it documents what a reader gets from `pip install sfmtool`. The pin is a
+# single release: moving it forward is a deliberate commit that rebuilds the
+# site and diffs the reference.
+sfmtool = "==0.4.1"
 
 [tasks]
-docs-serve = "zensical serve"
-docs-build = "zensical build && python scripts/add_legacy_redirects.py site"
+docs-serve = "python scripts/generate_cli_reference.py && zensical serve"
+docs-build = "python scripts/generate_cli_reference.py && zensical build && python scripts/add_legacy_redirects.py site"

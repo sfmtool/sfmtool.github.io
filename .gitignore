@@ -2,3 +2,5 @@
 !.pixi/config.toml
 site/
 __pycache__/
+# Written by scripts/generate_cli_reference.py at build time.
+docs/reference/commands.md
