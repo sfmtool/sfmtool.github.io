@@ -298,14 +298,22 @@ use the person's own profile.
   also write `innerWidth` and `innerHeight`, and enlarge the window until
   they equal the picture's `--window-size` before measuring.
 - **A picture:** `--force-device-scale-factor=2 --virtual-time-budget=3000
-  --blink-settings=preferredColorScheme=1 --window-size=1000,H
+  --blink-settings=preferredColorScheme=1 --window-size=W,H
   --screenshot=<file>.png <url>`, with `preferredColorScheme=0` for the dark
   scheme. Without the setting the browser takes the operating system's
-  scheme, as the site does. Do not put a `#anchor` in the URL: the picture
-  comes out blank. Make the window tall enough to hold the part to show and
-  crop it afterwards, at twice the CSS pixels that `getBoundingClientRect()`
-  gives from a `--dump-dom` of the same copy: on Windows with PowerShell's
-  `System.Drawing` (`$i=[System.Drawing.Bitmap]::FromFile(<in>)`,
+  scheme, as the site does. `W` is 1000, or at least 1220 when the picture
+  shows the left-hand nav: the theme hides the nav in a narrower window.
+  Do not put a `#anchor` in the URL or scroll from the script: the picture
+  comes out blank. For a part far down a page, have the script set
+  `display:none` on every element before the part's heading (its
+  `previousElementSibling`s, and those of each element that holds it, up to
+  the page's `article`), so the heading is at the top. The header and the
+  left-hand nav stay as they were, but **On this page** still shows the
+  start of its list, with no entry marked: crop it out. Make the window tall
+  enough to hold the part to show and crop it afterwards, at twice the CSS
+  pixels that `getBoundingClientRect()` gives from a `--dump-dom` of the
+  same copy: on Windows with PowerShell's `System.Drawing`
+  (`$i=[System.Drawing.Bitmap]::FromFile(<in>)`,
   `$i.Clone((New-Object System.Drawing.Rectangle X,Y,W,H),$i.PixelFormat).Save(<out>)`
   after `Add-Type -AssemblyName System.Drawing`), elsewhere with ImageMagick
   (`magick <in> -crop WxH+X+Y <out>`). `--hide-scrollbars` also hides a code
